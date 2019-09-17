@@ -4,3 +4,14 @@ CREATE TABLE user (
   email TEXT UNIQUE NOT NULL,
   profile_pic TEXT NOT NULL
 );
+
+CREATE TABLE joke (
+id INTEGER PRIMARY KEY,
+joke TEXT NOT NULL
+);
+
+CREATE TABLE motivational (
+id INTEGER PRIMARY KEY,
+motivational TEXT NOT NULL
+);
+

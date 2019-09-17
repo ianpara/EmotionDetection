@@ -71,12 +71,6 @@ def home():
         return '<a class="button" href="/login">Google Login</a>'
 
 
-
-
-@app.route('/welcome')
-def welcome():
-    return render_template('welcome.html')  # render a template
-
 # function for retrieving Google’s provider configuration:
 def get_google_provider_cfg():
     return requests.get(GOOGLE_DISCOVERY_URL).json()

@@ -22,9 +22,12 @@ from db import init_db_command
 from user import User
 
 # Google Login Configuration
-GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
-GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", None)
-GOOGLE_DISCOVERY_URL = ("https://accounts.google.com/.well-known/openid-configuration")
+# FUTURE FIX - make variables env variables and not shown here
+# GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
+GOOGLE_CLIENT_ID = '945666069099-6bgc35j8iqjrej43svhts9u87a8g0cdi.apps.googleusercontent.com'
+# GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", None)
+GOOGLE_CLIENT_SECRET = 'DDwwaYEca2jAv5c0EBRsp3hI'
+GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid-configuration"
 
 # create the application object
 app = Flask(__name__)
@@ -152,13 +155,13 @@ def callback():
     login_user(user)
 
     # Send user back to homepage
-    return redirect(url_for("index"))
+    return redirect(url_for("home"))
 
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for("index"))
+    return redirect(url_for("home"))
 
 
 # start the server with the 'run()' method

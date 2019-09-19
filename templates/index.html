@@ -1,5 +1,13 @@
 {% extends 'layout.html' %}
-
+{% include '_navbar.html' %}
 {% block body %}
-HOME
+<br>
+<br>
+<br>
+<div class="container">
+    <p>Hello, {{ current_user.name}}! You're logged in! Email: {{ current_user.email}}</p>
+    <p>Google Profile Picture:</p>
+    <img src="{{current_user.profile_pic}}" alt="Google profile pic"></img>
+
+</div>
 {% endblock %}

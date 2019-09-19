@@ -60,7 +60,6 @@ def home():
     if current_user.is_authenticated:
         return render_template('index.html')  # render a template
     else:
-        # return '<a class="button" href="/login">Google Login</a>'
         return render_template('login.html')  # render a template
 
 

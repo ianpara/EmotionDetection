@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # imports
 # Python standard libraries
 import json
@@ -61,7 +61,7 @@ def home():
     if current_user.is_authenticated:
         return render_template('index.html')  # render a template
     else:
-        return render_template('login.html')  # render a template
+        return render_template('home.html')  # render a template
 
 
 # function for retrieving Google’s provider configuration:
@@ -154,7 +154,7 @@ def logout():
 # start the server with the 'run()' method
 if __name__ == '__main__':
     app.run(debug=True, ssl_context="adhoc")
-=======
+
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -167,4 +167,4 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
->>>>>>> leah
+

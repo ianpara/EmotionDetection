@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # imports
 # Python standard libraries
 import json
@@ -153,3 +154,17 @@ def logout():
 # start the server with the 'run()' method
 if __name__ == '__main__':
     app.run(debug=True, ssl_context="adhoc")
+=======
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return render_template('home.html')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+>>>>>>> leah

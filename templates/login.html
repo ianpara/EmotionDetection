@@ -1,24 +1,69 @@
-{% extends "layout.html" %}
-{% include 'blank_navbar.html' %}
-{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - GLADiator</title>
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="static/css/login.css">
+</head>
 
-<br>
-<div class="container">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card card-signin my-5">
-          <div class="card-body">
-            <h5 class="card-title text-center">Sign In</h5>
-            <form class="form-signin">
-              <hr class="my-4">
-              <a class="btn btn-lg btn-block text-uppercase btn-dark" type="submit" href="/login"><i class="fab fa-google mr-2"></i> Sign in with Google</a>
-            </form>
-          </div>
+<nav class="navbar navbar-expand-md navbar-light fixed-top">
+    <a class="navbar-brand" href="#">
+    <img src="static/images/roman_helmet_48px.png" width="30" height="30" class="d-inline-block align-top" alt="gladiator logo">
+        GLADiator
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#modalLogin" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-sign-in fa-2x"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="nav navbar-nav ml-auto">
+        <li>
+            <button class="btn btn-outline-dark my-2 my-sm-0 " data-toggle="modal" data-target="#modalLogin">Sign In</button>
+        </li>
+        </ul>
+    </div>
+</nav>
+
+<body>
+
+<! -- Login Modal -->
+<main   role="main">
+<div id="modalLogin" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body justify-content-center">
+                <div class="md-form">
+                    <a href="/login" type="button" class="btn btn-light btn-large">
+                        <img src="static/images/icon-google.png" width="30" height="30" alt="GOOGLE"><span>Google</span>
+                    </a>
+                </div>
+                <span class="modal-note">Not a member? Click the button to become one!</span>
+            </div>
         </div>
-      </div>
     </div>
 </div>
+</main>
 
+<! -- Content -->
+<div class="container main">
+    <h2>What is this?</h2>
+    <br>
+    <p class="lead">Psychiatric disorders are present in nearly all suicide victims. Depression is normally the root of suicidal thoughts. While there are anti-depressant dugs and psychiatric treatments available for these patients, there is no form of device available that can detect depression episode in these patients. Such episodes can be detected and characterized by monitoring vocal tone and form of conversation of these patients. Since such episodes can occur at any time, an immediate psychiatric treatment may not be available. A simpler form of treatment could be to have an intervention through a phone call, an SMS with a cheerful joke or a link to small video clip. While not targeting any system for such psychiatric disorder, lets implement a simple mood swing detector with a library of jokes, which can cheer up people, when such swing occurs.</p>
+</div>
 
+<script src="static/js/jquery-3.2.1.min.js"></script>
+<script src="static/js/popper.js"></script>
+<script src="static/js/bootstrap.js"></script>
 
-{% endblock %}
+</body>
+</html>
+

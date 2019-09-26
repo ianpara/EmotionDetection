@@ -152,4 +152,4 @@ def logout():
 
 # start the server with the 'run()' method
 if __name__ == '__main__':
-    app.run(debug=True, ssl_context="adhoc")
+    app.run()

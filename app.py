@@ -5,6 +5,11 @@ import os
 import sqlite3
 import pymysql  # for local db
 
+# import db connection from the db_connect file
+from db_connect import dbconn
+
+
+
 # Third-party libraries
 from flask import Flask, redirect, request, url_for, render_template, session, flash
 from flask_login import (
@@ -63,17 +68,9 @@ def load_user(user_id):
 @app.route('/')
 def home():
     if current_user.is_authenticated:
-        return (
-            "<p>Hello, {}! You're logged in! Email: {}</p>"
-            "<div><p>Google Profile Picture:</p>"
-            '<img src="{}" alt="Google profile pic"></img></div>'
-            '<a class="button" href="/logout">Logout</a>'.format(
-                current_user.name, current_user.email, current_user.profile_pic
-            )
-        )
-        # return render_template('index.html')  # render a template
+        return render_template('index.html')  # render a template
     else:
-        return '<a class="button" href="/login">Google Login</a>'
+        return render_template('login.html')  # render a template
 
 
 # function for retrieving Google’s provider configuration:

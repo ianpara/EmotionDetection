@@ -24,24 +24,6 @@ import requests
 from db import init_db_command
 from user import User
 
-# from joke import Joke
-# Open local database connection
-dbLocal = pymysql.connect("localhost", "root", "1234", "emotionDB")
-# dbLocal = pymysql.connect(user="root", passwd="1234", host="127.0.0.1", port=3306, database="emotionDB")
-
-# prepare a cursor object using cursor() method
-cursor = dbLocal.cursor()
-#cursor.execute("INSERT INTO joke VALUES (2, 'TestJoke2')")
-#dbLocal.commit()
-#try:
-cursor.execute("SELECT joketext from joke where jokeid=1")
-data = cursor.fetchall()
-testString = "Joke : %s" % data
-print(testString)
-#except Exception as e:
-#    print("Exception : ", e)
-
-
 # Google Login Configuration
 # FUTURE FIX - make variables env variables and not shown here
 # GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
@@ -91,7 +73,7 @@ def home():
         )
         # return render_template('index.html')  # render a template
     else:
-        return '<a class="button" href="/login">Google Login</a>' + " " + testString
+        return '<a class="button" href="/login">Google Login</a>'
 
 
 # function for retrieving Google’s provider configuration:

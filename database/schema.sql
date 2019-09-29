@@ -6,9 +6,11 @@ CREATE TABLE user (
 );
 
 CREATE TABLE joke (
-id INTEGER PRIMARY KEY,
-joke TEXT NOT NULL
+jokeid INTEGER PRIMARY KEY,
+joketext TEXT NOT NULL
 );
+
+INSERT INTO joke VALUES (1, 'Test Joke')
 
 CREATE TABLE motivational (
 id INTEGER PRIMARY KEY,

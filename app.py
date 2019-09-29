@@ -3,6 +3,7 @@
 import json
 import os
 import sqlite3
+import pymysql  # for local db
 
 # Third-party libraries
 from flask import Flask, redirect, request, url_for, render_template, session, flash
@@ -13,6 +14,8 @@ from flask_login import (
     login_user,
     logout_user,
 )
+
+# from flask_mysqldb import MySql
 from oauthlib.oauth2 import WebApplicationClient
 from functools import wraps
 import requests
@@ -20,6 +23,24 @@ import requests
 # Internal imports
 from db import init_db_command
 from user import User
+
+# from joke import Joke
+# Open local database connection
+dbLocal = pymysql.connect("localhost", "root", "1234", "emotionDB")
+# dbLocal = pymysql.connect(user="root", passwd="1234", host="127.0.0.1", port=3306, database="emotionDB")
+
+# prepare a cursor object using cursor() method
+cursor = dbLocal.cursor()
+#cursor.execute("INSERT INTO joke VALUES (2, 'TestJoke2')")
+#dbLocal.commit()
+#try:
+cursor.execute("SELECT joketext from joke where jokeid=1")
+data = cursor.fetchall()
+testString = "Joke : %s" % data
+print(testString)
+#except Exception as e:
+#    print("Exception : ", e)
+
 
 # Google Login Configuration
 # FUTURE FIX - make variables env variables and not shown here
@@ -49,10 +70,12 @@ except sqlite3.OperationalError:
 # OAuth 2 client setup
 client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
+
 # Flask-Login helper to retrieve a user from our db
 @login_manager.user_loader
 def load_user(user_id):
     return User.get(user_id)
+
 
 # use decorators to link the function to a url
 @app.route('/')
@@ -68,12 +91,13 @@ def home():
         )
         # return render_template('index.html')  # render a template
     else:
-        return '<a class="button" href="/login">Google Login</a>'
+        return '<a class="button" href="/login">Google Login</a>' + " " + testString
 
 
 # function for retrieving Google’s provider configuration:
 def get_google_provider_cfg():
     return requests.get(GOOGLE_DISCOVERY_URL).json()
+
 
 # route for handling the login page logic
 @app.route('/login')
@@ -90,6 +114,7 @@ def login():
         scope=["openid", "email", "profile"],
     )
     return redirect(request_uri)
+
 
 @app.route("/login/callback")
 def callback():
@@ -151,6 +176,7 @@ def callback():
     # Send user back to homepage
     return redirect(url_for("home"))
 
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -161,3 +187,6 @@ def logout():
 # start the server with the 'run()' method
 if __name__ == '__main__':
     app.run(debug=True, ssl_context="adhoc")
+
+#Closing mysql database
+dbLocal.close()

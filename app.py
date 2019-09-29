@@ -2,12 +2,25 @@
 # Python standard libraries
 import json
 import os
-import sqlite3
+
+# unused import:
+# import sqlite3
+
+############### New DB stuff from Nicole and Yasmin ###########
 
 # import db connection from the db_connect file
-from db_connect import dbconn
+from db_connect import Database
 
+Database.select_user()
 
+testname = "yasmin"
+testemail = "yasmin@email.com"
+testpic = "yasminpic"
+# Database.add_user("yasmin", testemail, testpic)  # can add user by passing string directly or passing variable
+# Database.remove_user_name("yasmin")
+# Database.remove_userID(9)
+
+################################################################
 
 # Third-party libraries
 from flask import Flask, redirect, request, url_for, render_template, session, flash
@@ -44,12 +57,17 @@ app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-# Database setup
-try:
-    init_db_command()
-except sqlite3.OperationalError:
-    # Assume it's already been created
-    pass
+
+####### Commented out the following -> don't want sqlite stuff, we want MySQL stuff ######
+
+# # Database setup
+# try:
+#     init_db_command()
+# except sqlite3.OperationalError:
+#     # Assume it's already been created
+#     pass
+###############################################################
+
 
 # OAuth 2 client setup
 client = WebApplicationClient(GOOGLE_CLIENT_ID)

@@ -4,6 +4,11 @@ import json
 import os
 import sqlite3
 
+# import db connection from the db_connect file
+from db_connect import dbconn
+
+
+
 # Third-party libraries
 from flask import Flask, redirect, request, url_for, render_template, session, flash
 from flask_login import (

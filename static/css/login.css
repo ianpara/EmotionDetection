@@ -166,3 +166,9 @@ button:hover {
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 }
+
+/*//////////////////////////////////////////////////////////////////
+[ MODAL ]*/
+.modal-content {
+    background-color: #444444;
+}

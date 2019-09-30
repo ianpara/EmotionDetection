@@ -4,10 +4,23 @@
 <br>
 <br>
 <br>
+<br>
 <div class="container">
-    <p>Hello, {{ current_user.name}}! You're logged in! Email: {{ current_user.email}}</p>
-    <p>Google Profile Picture:</p>
-    <img src="{{current_user.profile_pic}}" alt="Google profile pic"></img>
-
+  <div class="row">
+    <div class="col-md-6 img">
+ <img src="{{current_user.profile_pic}}" alt="Google profile pic"alt="img-rounded"></img>
+    </div>
+    <div class="col-md-6 details">
+      <blockquote>
+        <h5>{{ current_user.name}}</h5>
+        <small><cite title="Source Title">Chicago, United States of America  <i class="icon-map-marker"></i></cite></small>
+      </blockquote>
+      <p>
+         {{ current_user.email}} <br>
+        {{ current_user.birthday}} <br>
+        Last Mood Logged:
+      </p>
+    </div>
+  </div>
 </div>
 {% endblock %}

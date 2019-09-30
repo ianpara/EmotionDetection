@@ -63,6 +63,19 @@ def home():
     else:
         return render_template('home.html')  # render a template
 
+@app.route('/home')
+def home1():
+    return render_template('home.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 
 # function for retrieving Google’s provider configuration:
 def get_google_provider_cfg():
@@ -158,11 +171,6 @@ if __name__ == '__main__':
 from flask import Flask, render_template
 
 app = Flask(__name__)
-
-
-@app.route('/')
-def index():
-    return render_template('home.html')
 
 
 if __name__ == '__main__':

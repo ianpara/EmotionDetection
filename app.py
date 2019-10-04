@@ -49,10 +49,12 @@ except sqlite3.OperationalError:
 # OAuth 2 client setup
 client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
+
 # Flask-Login helper to retrieve a user from our db
 @login_manager.user_loader
 def load_user(user_id):
     return User.get(user_id)
+
 
 # use decorators to link the function to a url
 @app.route('/')
@@ -66,6 +68,7 @@ def home():
 # function for retrieving Google’s provider configuration:
 def get_google_provider_cfg():
     return requests.get(GOOGLE_DISCOVERY_URL).json()
+
 
 # route for handling the login page logic
 @app.route('/login')
@@ -82,6 +85,7 @@ def login():
         scope=["openid", "email", "profile"],
     )
     return redirect(request_uri)
+
 
 @app.route("/login/callback")
 def callback():
@@ -142,6 +146,7 @@ def callback():
 
     # Send user back to homepage
     return redirect(url_for("home"))
+
 
 @app.route('/logout')
 @login_required

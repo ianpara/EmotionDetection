@@ -2,16 +2,16 @@
 # Python standard libraries
 import json
 import os
-<<<<<<< HEAD
+
 import sqlite3
 import pymysql  # for local db
-=======
+
 
 # unused import:
 # import sqlite3
 
 ############### New DB stuff from Nicole and Yasmin ###########
->>>>>>> nicolemurt
+
 
 # import db connection from the db_connect file
 from db_connect import Database
@@ -21,8 +21,8 @@ Database.select_user()
 testname = "yasmin"
 testemail = "yasmin@email.com"
 testpic = "yasminpic"
-# Database.add_user("yasmin", testemail, testpic)  # can add user by passing string directly or passing variable
-# Database.remove_user_name("yasmin")
+#Database.add_user("yasmin", testemail, testpic)  # can add user by passing string directly or passing variable
+Database.remove_user_name("yasmin")
 # Database.remove_userID(9)
 
 ################################################################

@@ -19,7 +19,7 @@
         <property name="enable_load_extension" value="true" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="@localhost" uuid="37443976-a7b5-472a-8c82-81557cf35b76">
+    <data-source source="LOCAL" name="@localhost" uuid="b01c675f-9a3b-43f2-9b7f-985f9c6527b9">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>

@@ -11,7 +11,7 @@
       <auth-required>false</auth-required>
       <schema-mapping />
     </data-source>
-    <data-source name="@localhost" uuid="37443976-a7b5-472a-8c82-81557cf35b76">
+    <data-source name="@localhost" uuid="b01c675f-9a3b-43f2-9b7f-985f9c6527b9">
       <database-info product="MySQL" version="8.0.17" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="8.0.17" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
@@ -21,10 +21,7 @@
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema">
-            <name qname="@" />
-            <name qname="emotiondb" />
-          </node>
+          <node kind="schema" qname="@" />
         </introspection-scope>
       </schema-mapping>
     </data-source>

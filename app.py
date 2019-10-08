@@ -20,6 +20,7 @@ import requests
 # Internal imports
 from db import init_db_command
 from user import User
+from record import start_recording
 
 # Google Login Configuration
 # FUTURE FIX - make variables env variables and not shown here
@@ -169,6 +170,12 @@ def about():
 @login_required
 def record():
     return render_template('record.html', title="Record Mood")
+
+# background process happening without any refreshing
+@app.route('/background_process_test')
+def background_process_test():
+    start_recording()
+    return "nothing"
 
 
 @app.route('/logs')

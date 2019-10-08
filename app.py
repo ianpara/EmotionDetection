@@ -60,9 +60,9 @@ def load_user(user_id):
 @app.route('/')
 def home():
     if current_user.is_authenticated:
-        return render_template('index.html')  # render a template
+        return render_template('index.html', title="Home")  # render a template
     else:
-        return render_template('login.html')  # render a template
+        return render_template('login.html', title="Login")  # render a template
 
 
 # function for retrieving Google’s provider configuration:
@@ -153,6 +153,35 @@ def callback():
 def logout():
     logout_user()
     return redirect(url_for("home"))
+
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html', title="Contact")
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html', title="About")
+
+
+@app.route('/record')
+@login_required
+def record():
+    return render_template('record.html', title="Record Mood")
+
+
+@app.route('/logs')
+@login_required
+def logs():
+    return render_template('logs.html', title="Logs")
+
+
+@app.route('/account')
+@login_required
+def account():
+    return render_template('account.html', title="My Account")
+
 
 
 # start the server with the 'run()' method

@@ -5,7 +5,7 @@ import os
 import sqlite3
 
 # Third-party libraries
-from flask import Flask, redirect, request, url_for, render_template, session, flash
+from flask import Flask, redirect, request, url_for, render_template
 from flask_login import (
     LoginManager,
     current_user,
@@ -14,13 +14,12 @@ from flask_login import (
     logout_user,
 )
 from oauthlib.oauth2 import WebApplicationClient
-from functools import wraps
 import requests
 
 # Internal imports
-from db import init_db_command
-from user import User
-from record import start_recording
+from database.db import init_db_command
+from database.user import User
+from audio.record import start_recording
 
 # Google Login Configuration
 # FUTURE FIX - make variables env variables and not shown here
@@ -172,8 +171,8 @@ def record():
     return render_template('record.html', title="Record Mood")
 
 # background process happening without any refreshing
-@app.route('/background_process_test')
-def background_process_test():
+@app.route('/start_record')
+def start_record():
     start_recording()
     return "nothing"
 

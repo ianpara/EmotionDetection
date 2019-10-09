@@ -4,6 +4,20 @@
 
 <h2>RECORD PAGE</h2>
 <br>
-<a href=# id=test><button class='btn btn-primary'>Record</button></a>
+<a href=# id=record><button class='btn btn-primary'>Record</button></a>
 
+{% endblock %}
+
+{% block script %}
+<script type=text/javascript>
+        $(function() {
+          $('a#record').bind('click', function() {
+            $.getJSON('/start_record',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+</script>
 {% endblock %}

@@ -1,6 +1,6 @@
 from flask_login import UserMixin
 
-from db import get_db
+from database.db import get_db
 
 class User(UserMixin):
     def __init__(self, id_, name, email, profile_pic):
@@ -30,5 +30,15 @@ class User(UserMixin):
             "INSERT INTO user (id, name, email, profile_pic) "
             "VALUES (?, ?, ?, ?)",
             (id_, name, email, profile_pic),
+        )
+        db.commit()
+
+
+    @staticmethod
+    def delete(user_id):
+        db = get_db()
+        db.execute(
+            "DELETE FROM user WHERE id = ?",
+            user_id
         )
         db.commit()

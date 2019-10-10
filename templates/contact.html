@@ -1,36 +1,26 @@
-{% extends 'layout.html' %}
-{% include '_navbar.html' %}
+{% extends "login_layout.html" %}
+{% from "macros.html" import nav_link with context %}
 
-{% block body %}
-<h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">
-                    Need to contact us?</h2>
-<div class="row row-sm-offset">
-    <div class="col-md-4 multi-horizontal" data-for="name">
+
+{% block content %}
+<! -- Content -->
+
+
+
+<div class="inner cover">
+    <h1 class="cover-heading">Have a Question?</h1>
+    <br>
+    <form>
         <div class="form-group">
-            <label class="form-control-label mbr-fonts-style display-7" for="name-form1-2w">Name</label>
-            <input type="text" class="form-control" name="name" data-form-field="Name" required="" id="name-form1-2w">
+            <label for="formControlInput1">Email Address</label>
+            <input type="email" class="form-control" id="formControlInput1" placeholder="name@example.com">
         </div>
-    </div>
-    <div class="col-md-4 multi-horizontal" data-for="email">
         <div class="form-group">
-            <label class="form-control-label mbr-fonts-style display-7" for="email-form1-2w">Email</label>
-            <input type="email" class="form-control" name="email" data-form-field="Email" required=""
-                   id="email-form1-2w">
+            <label for="formControlTextarea">Type here:</label>
+            <textarea class="form-control" id="formControlTextarea" rows="3"></textarea>
         </div>
-    </div>
-    <div class="col-md-4 multi-horizontal" data-for="phone">
-        <div class="form-group">
-            <label class="form-control-label mbr-fonts-style display-7" for="phone-form1-2w">Phone</label>
-            <input type="tel" class="form-control" name="phone" data-form-field="Phone" id="phone-form1-2w">
-        </div>
-    </div>
+        <button type="submit" class="btn btn-secondary my-1">Submit</button>
+    </form>
 </div>
-<div class="form-group" data-for="message">
-    <label class="form-control-label mbr-fonts-style display-7" for="message-form1-2w">Message</label>
-    <textarea type="text" class="form-control" name="message" rows="7" data-form-field="Message"
-              id="message-form1-2w"></textarea>
-</div>
-<span class="input-group-btn">
-                            <button href="" type="submit" class="btn btn-primary btn-form display-4">SEND FORM</button>
-                        </span>
+
 {% endblock %}

@@ -4,6 +4,8 @@ import json
 import os
 import sqlite3
 
+from db_connect import Database #mysql local db
+
 # Third-party libraries
 from flask import Flask, redirect, request, url_for, render_template
 from flask_login import (
@@ -13,6 +15,8 @@ from flask_login import (
     login_user,
     logout_user,
 )
+
+
 from oauthlib.oauth2 import WebApplicationClient
 import requests
 
@@ -38,6 +42,11 @@ app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
 # https://flask-login.readthedocs.io/en/latest
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+
+testname = "yasmin"
+testemail = "yasmin@email.com"
+testpic = "yasminpic"
 
 # Database setup
 try:

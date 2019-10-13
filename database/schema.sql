@@ -2,6 +2,7 @@ CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
   name TEXT NOT NULL,
   email TEXT UNIQUE NOT NULL,
+<<<<<<< HEAD
   profile_pic TEXT NOT NULL
 );
 
@@ -28,3 +29,4 @@ CREATE TABLE mood (
   user_id TEXT NOT NULL,
   recording TEXT UNIQUE NOT NULL
 );
+>>>>>>> origin/ian

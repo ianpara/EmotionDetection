@@ -1,13 +1,7 @@
-{% extends 'layout.html' %}
-{% include '_navbar.html' %}
-{% block body %}
-<br>
-<br>
-<br>
-<div class="container">
-    <p>Hello, {{ current_user.name}}! You're logged in! Email: {{ current_user.email}}</p>
-    <p>Google Profile Picture:</p>
-    <img src="{{current_user.profile_pic}}" alt="Google profile pic"></img>
+{% extends "home_layout.html" %}
+{% from "macros.html" import nav_link2 with context %}
+{% block content %}
 
-</div>
+<h1>Welcome</h1>
+
 {% endblock %}

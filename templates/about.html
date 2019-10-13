@@ -1,0 +1,47 @@
+{% extends "login_layout.html" %}
+{% from "macros.html" import nav_link with context %}
+
+{% block content %}
+<! -- Content -->
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="inner cover">
+            <div class="carousel-item active">
+                            <span class="d-block w-100">
+                            <h2 class="cover-heading">Fight Your Inner Demons</h2>
+                            <br>
+                            <p class="lead">GLADiator is a tool to help you identify and record your emotions. Moods are the heart of GLADiator (and you too) so we developed a system that can accurately analyze audio to identify your current mood.</p>
+                            <br>
+                            </span>
+            </div>
+            <div class="carousel-item">
+                <h2 class="cover-heading">We'll Help You</h2>
+                <br>
+                <p class="lead">Once you record you mood that's where we step in. No matter if your mood is negative or a positive one, we'll offer jokes, inspirational quotes, and even breathing techniques to get you back on track and feeling yourself again! </p>
+                <br>
+            </div>
+            <div class="carousel-item">
+                <h2 class="cover-heading">Live Better</h2>
+                <br>
+                <p class="lead">GLADiator was created to be a guiding hand that helps you learn healthy coping exercises that you can apply to every day life. Our team developed GLADiator to be a form of mobile assistance that can detect emotional episodes in an easy and friendly way.</p>
+                <br>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+{% endblock %}

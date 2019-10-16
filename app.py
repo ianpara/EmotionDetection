@@ -149,6 +149,11 @@ def callback():
     # Doesn't exist? Add it to the database.
     if not User.get(unique_id):
         User.create(unique_id, users_name, users_email, picture)
+        print("just finished calling create method")
+
+    # print("about to call create_ED_users method")
+    # if not User.get_ED_user(unique_id):
+    #     User.create_ED_users(unique_id)
 
     # Begin user session by logging the user in
     login_user(user)

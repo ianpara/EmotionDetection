@@ -1,0 +1,2 @@
+# ignores all pycache files
+*.pyc

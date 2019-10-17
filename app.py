@@ -4,8 +4,10 @@ import json
 import os
 import sqlite3
 
+from db_connect import Database #mysql local db
+
 # Third-party libraries
-from flask import Flask, redirect, request, url_for, render_template, session, flash
+from flask import Flask, redirect, request, url_for, render_template
 from flask_login import (
     LoginManager,
     current_user,
@@ -13,13 +15,15 @@ from flask_login import (
     login_user,
     logout_user,
 )
+
+
 from oauthlib.oauth2 import WebApplicationClient
-from functools import wraps
 import requests
 
 # Internal imports
-from db import init_db_command
-from user import User
+from database.db import init_db_command
+from database.user import User
+from audio.record import start_recording
 
 # Google Login Configuration
 # FUTURE FIX - make variables env variables and not shown here
@@ -38,6 +42,11 @@ app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
 # https://flask-login.readthedocs.io/en/latest
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+
+testname = "yasmin"
+testemail = "yasmin@email.com"
+testpic = "yasminpic"
 
 # Database setup
 try:
@@ -140,6 +149,11 @@ def callback():
     # Doesn't exist? Add it to the database.
     if not User.get(unique_id):
         User.create(unique_id, users_name, users_email, picture)
+        print("just finished calling create method")
+
+    # print("about to call create_ED_users method")
+    # if not User.get_ED_user(unique_id):
+    #     User.create_ED_users(unique_id)
 
     # Begin user session by logging the user in
     login_user(user)
@@ -169,6 +183,12 @@ def about():
 @login_required
 def record():
     return render_template('record.html', title="Record Mood")
+
+# background process happening without any refreshing
+@app.route('/start_record')
+def start_record():
+    start_recording()
+    return "nothing"
 
 
 @app.route('/logs')

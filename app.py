@@ -4,7 +4,7 @@ import json
 import os
 import sqlite3
 
-from db_connect import Database #mysql local db
+#from db_connect import Database #mysql local db
 
 # Third-party libraries
 from flask import Flask, redirect, request, url_for, render_template
@@ -23,7 +23,9 @@ import requests
 # Internal imports
 from database.db import init_db_command
 from database.user import User
-from audio.record import start_recording
+from database.db_liteconnect import Database #our own dblite connection
+
+#from audio.record import start_recording
 
 # Google Login Configuration
 # FUTURE FIX - make variables env variables and not shown here
@@ -43,11 +45,6 @@ app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-
-testname = "yasmin"
-testemail = "yasmin@email.com"
-testpic = "yasminpic"
-
 # Database setup
 try:
     init_db_command()
@@ -55,6 +52,7 @@ except sqlite3.OperationalError:
     # Assume it's already been created
     pass
 
+Database.select_user()
 # OAuth 2 client setup
 client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
@@ -62,8 +60,8 @@ client = WebApplicationClient(GOOGLE_CLIENT_ID)
 # Flask-Login helper to retrieve a user from our db
 @login_manager.user_loader
 def load_user(user_id):
+    print(User.get(user_id))
     return User.get(user_id)
-
 
 # use decorators to link the function to a url
 @app.route('/')
@@ -154,9 +152,9 @@ def callback():
         # print("just finished calling create_ED_users method in same if block")
 
 
-    print("about to call create_ED_users method")
-    if not User.get_ED_user(unique_id):
-        User.create_ED_users()
+   # print("about to call create_ED_users method")
+   # if not User.get_ED_user(unique_id):
+    #    User.create_ED_users()
 
     # Begin user session by logging the user in
     login_user(user)

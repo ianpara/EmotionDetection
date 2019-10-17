@@ -12,10 +12,10 @@ CREATE TABLE "sqlite_sequence" (
 );
 
 CREATE TABLE "motivational_tracker" (
-	"userID"	INTEGER NOT NULL,
+	"userID"	TEXT NOT NULL,
 	"motivationalID"	INTEGER NOT NULL,
-	FOREIGN KEY("userID") REFERENCES "ED_users"("userID") ON UPDATE CASCADE,
-	FOREIGN KEY("motivationalID") REFERENCES "motivational_quotes"("motivationalID") ON UPDATE CASCADE
+	FOREIGN KEY("motivationalID") REFERENCES "motivational_quotes"("motivationalID") ON UPDATE CASCADE,
+	FOREIGN KEY("userID") REFERENCES "user"("id") ON UPDATE CASCADE
 );
 
 CREATE TABLE "motivational_quotes" (
@@ -30,11 +30,11 @@ CREATE TABLE "moods" (
 );
 
 CREATE TABLE "mood_tracker" (
-	"userID"	INTEGER,
+	"userID"	TEXT,
 	"moodID"	INTEGER,
 	"calenderDate"	date NOT NULL,
-	FOREIGN KEY("userID") REFERENCES "ED_users"("userID") ON UPDATE CASCADE,
-	FOREIGN KEY("moodID") REFERENCES "moods"("moodID") ON UPDATE CASCADE
+	FOREIGN KEY("moodID") REFERENCES "moods"("moodID") ON UPDATE CASCADE,
+	FOREIGN KEY("userID") REFERENCES "user"("id") ON UPDATE CASCADE
 );
 
 CREATE TABLE "jokes" (
@@ -43,21 +43,15 @@ CREATE TABLE "jokes" (
 );
 
 CREATE TABLE "joke_tracker" (
-	"userID"	INTEGER NOT NULL,
+	"userID"	TEXT NOT NULL,
 	"jokeID"	INTEGER NOT NULL,
-	FOREIGN KEY("userID") REFERENCES "ED_users"("userID") ON UPDATE CASCADE,
-	FOREIGN KEY("jokeID") REFERENCES "jokes"("jokeID") ON UPDATE CASCADE
+	FOREIGN KEY("jokeID") REFERENCES "jokes"("jokeID") ON UPDATE CASCADE,
+	FOREIGN KEY("userID") REFERENCES "user"("id") ON UPDATE CASCADE
 );
 
 CREATE TABLE "contacts" (
-	"userID"	INTEGER NOT NULL UNIQUE,
+	"userID"	TEXT NOT NULL UNIQUE,
 	"contact_number"	TEXT NOT NULL,
 	"contact_name"	TEXT NOT NULL,
-	FOREIGN KEY("userID") REFERENCES "ED_users"("userID") ON UPDATE CASCADE
-);
-
-CREATE TABLE "ED_users" (
-	"userID"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-	"id"	TEXT NOT NULL UNIQUE,
-	FOREIGN KEY("id") REFERENCES "user"("id") ON UPDATE CASCADE
+	FOREIGN KEY("userID") REFERENCES "user"("id") ON UPDATE CASCADE
 );

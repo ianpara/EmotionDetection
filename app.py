@@ -152,9 +152,9 @@ def callback():
         # print("just finished calling create_ED_users method in same if block")
 
 
-    print("about to call create_ED_users method")
-    if not User.get_ED_user(unique_id):
-        User.create_ED_users()
+   # print("about to call create_ED_users method")
+   # if not User.get_ED_user(unique_id):
+    #    User.create_ED_users()
 
     # Begin user session by logging the user in
     login_user(user)

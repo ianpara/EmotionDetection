@@ -16,5 +16,10 @@
       <user-name>root</user-name>
       <schema-mapping />
     </data-source>
+    <data-source name="sqlite_db [2]" uuid="db8452f3-2d9c-4f29-805c-65bfcad8d2d8">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
+      <auth-required>false</auth-required>
+      <schema-mapping />
+    </data-source>
   </component>
 </project>

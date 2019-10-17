@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0d38071-0ab7-4fd2-bcae-1d7bb86d0509" name="Default Changelist" comment="" />
+    <list default="true" id="b0d38071-0ab7-4fd2-bcae-1d7bb86d0509" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqlite_db" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite_db" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +118,7 @@
       <workItem from="1571330232916" duration="73000" />
       <workItem from="1571330314370" duration="268000" />
       <workItem from="1571339018383" duration="385000" />
+      <workItem from="1571339691875" duration="360000" />
     </task>
     <servers />
   </component>
@@ -135,6 +139,6 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/EmotionDetection$app.coverage" NAME="app Coverage Results" MODIFIED="1571339377857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/EmotionDetection$app.coverage" NAME="app Coverage Results" MODIFIED="1571340047863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -23,19 +23,6 @@ class User(UserMixin):
         )
         return user
 
-    # @staticmethod
-    # def get_ED_user(user_id):
-    #     db = get_db()
-    #     user = db.execute(
-    #         "SELECT * FROM ED_users WHERE id = ?", (user_id,)
-    #     ).fetchone()
-    #     if not user:
-    #         return None
-    #
-    #     user = User(
-    #         id_=user[0], name=user[1], email=user[2], profile_pic=user[3]
-    #     )
-    #     return user
 
     @staticmethod
     def create(id_, name, email, profile_pic):
@@ -51,8 +38,8 @@ class User(UserMixin):
 #     @staticmethod
 #     def create_ED_users(id_):
 #         db = get_db()
-#         cursor = db.cursor()
-#         cursor.exectue("INSERT INTO ED_users (userID, id) VALUES (1, 'test')")
+#         sor = db.cursor()
+#         cucurrsor.exectue("INSERT INTO ED_users (userID, id) VALUES (1, 'test')")
 # #        db.execute("INSERT INTO ED_users (id) VALUES (?)", id_)  ### THIS IS THE LINE THAT BREAKS THIS METHOD -> TEST WHY
 #         db.commit()
 #         print("just finished running create_ED_users method with test data")
@@ -66,3 +53,19 @@ class User(UserMixin):
             user_id
         )
         db.commit()
+
+
+
+    # @staticmethod
+    # def get_ED_user(user_id):
+    #     db = get_db()
+    #     user = db.execute(
+    #         "SELECT * FROM ED_users WHERE id = ?", (user_id,)
+    #     ).fetchone()
+    #     if not user:
+    #         return None
+    #
+    #     user = User(
+    #         id_=user[0], name=user[1], email=user[2], profile_pic=user[3]
+    #     )
+    #     return user

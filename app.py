@@ -52,8 +52,11 @@ except sqlite3.OperationalError:
     # Assume it's already been created
     pass
 
-Database.select_user()
-# OAuth 2 client setup
+
+print(Database.select_all_users())
+#Database.remove_joke_text("I was wondering why the baseball was getting closer and then it hit me.")
+
+
 client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
 
@@ -188,7 +191,7 @@ def record():
 # background process happening without any refreshing
 @app.route('/start_record')
 def start_record():
-    start_recording()
+    #start_recording()
     return "nothing"
 
 

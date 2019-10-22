@@ -4,11 +4,9 @@ import json
 import os
 import sqlite3
 
-<<<<<<< HEAD
-from db_connect import Database #mysql local db
-=======
+
 #from db_connect import Database #mysql local db
->>>>>>> yasmin
+
 
 # Third-party libraries
 from flask import Flask, redirect, request, url_for, render_template
@@ -27,13 +25,12 @@ import requests
 # Internal imports
 from database.db import init_db_command
 from database.user import User
-<<<<<<< HEAD
-from audio.record import start_recording
-=======
+
+
 from database.db_liteconnect import Database #our own dblite connection
 
 #from audio.record import start_recording
->>>>>>> yasmin
+
 
 # Google Login Configuration
 # FUTURE FIX - make variables env variables and not shown here
@@ -164,12 +161,7 @@ def callback():
     if not User.get(unique_id):
         User.create(unique_id, users_name, users_email, picture)
         print("just finished calling create method")
-<<<<<<< HEAD
 
-    # print("about to call create_ED_users method")
-    # if not User.get_ED_user(unique_id):
-    #     User.create_ED_users(unique_id)
-=======
         # User.create_ED_users(unique_id)
         # print("just finished calling create_ED_users method in same if block")
 
@@ -177,7 +169,7 @@ def callback():
    # print("about to call create_ED_users method")
    # if not User.get_ED_user(unique_id):
     #    User.create_ED_users()
->>>>>>> yasmin
+
 
     # Begin user session by logging the user in
     login_user(user)
@@ -211,11 +203,9 @@ def record():
 # background process happening without any refreshing
 @app.route('/start_record')
 def start_record():
-<<<<<<< HEAD
-    start_recording()
-=======
+
     #start_recording()
->>>>>>> yasmin
+
     return "nothing"
 
 

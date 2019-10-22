@@ -4,7 +4,11 @@ import json
 import os
 import sqlite3
 
+<<<<<<< HEAD
 from db_connect import Database #mysql local db
+=======
+#from db_connect import Database #mysql local db
+>>>>>>> yasmin
 
 # Third-party libraries
 from flask import Flask, redirect, request, url_for, render_template
@@ -23,7 +27,13 @@ import requests
 # Internal imports
 from database.db import init_db_command
 from database.user import User
+<<<<<<< HEAD
 from audio.record import start_recording
+=======
+from database.db_liteconnect import Database #our own dblite connection
+
+#from audio.record import start_recording
+>>>>>>> yasmin
 
 # Google Login Configuration
 # FUTURE FIX - make variables env variables and not shown here
@@ -55,15 +65,19 @@ except sqlite3.OperationalError:
     # Assume it's already been created
     pass
 
-# OAuth 2 client setup
+
+print(Database.select_all_users())
+#Database.remove_joke_text("I was wondering why the baseball was getting closer and then it hit me.")
+
+
 client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
 
 # Flask-Login helper to retrieve a user from our db
 @login_manager.user_loader
 def load_user(user_id):
+    print(User.get(user_id))
     return User.get(user_id)
-
 
 # use decorators to link the function to a url
 @app.route('/')
@@ -150,10 +164,20 @@ def callback():
     if not User.get(unique_id):
         User.create(unique_id, users_name, users_email, picture)
         print("just finished calling create method")
+<<<<<<< HEAD
 
     # print("about to call create_ED_users method")
     # if not User.get_ED_user(unique_id):
     #     User.create_ED_users(unique_id)
+=======
+        # User.create_ED_users(unique_id)
+        # print("just finished calling create_ED_users method in same if block")
+
+
+   # print("about to call create_ED_users method")
+   # if not User.get_ED_user(unique_id):
+    #    User.create_ED_users()
+>>>>>>> yasmin
 
     # Begin user session by logging the user in
     login_user(user)
@@ -187,7 +211,11 @@ def record():
 # background process happening without any refreshing
 @app.route('/start_record')
 def start_record():
+<<<<<<< HEAD
     start_recording()
+=======
+    #start_recording()
+>>>>>>> yasmin
     return "nothing"
 
 

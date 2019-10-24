@@ -56,6 +56,9 @@ except sqlite3.OperationalError:
 print(Database.select_all_users())
 #Database.remove_joke_text("I was wondering why the baseball was getting closer and then it hit me.")
 
+# test mood_tracker method
+print(Database.retrieve_userMoods(1))
+print(Database.retrieve_userMoods(2))
 
 client = WebApplicationClient(GOOGLE_CLIENT_ID)
 

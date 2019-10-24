@@ -55,14 +55,14 @@ class Database():
 
 ############ B E G I N __ J O K E __ M E T H O D S ############
     @staticmethod
-    #spew forth all cheesiness
+    # spew forth all cheesiness
     def select_all_jokes():
         cursor.execute("SELECT * FROM jokes")
         data = cursor.fetchall()
         return data
 
     @staticmethod
-    #select a single joke based on the joke's ID
+    # select a single joke based on the joke's ID
     def select_a_joke(givenJokeID):
         cursor.execute("SELECT * FROM jokes where jokeID = ?", [givenJokeID]) #requires list literal [ ... ]
         data = cursor.fetchall()
@@ -95,7 +95,7 @@ class Database():
 
 
     #@staticmethod
-    #def search_joke_tracked(userID, jokeID):
+    # def search_joke_tracked(userID, jokeID):
         # TO DO
 ############ E N D __ J O K E __ T R A C K E R __ M E T H O D S ############
 
@@ -103,14 +103,14 @@ class Database():
 ############ B E G I N __ M O T I V A T I O N A L __ M E T H O D S ############
 
     @staticmethod
-    #spew forth all cheesiness
+    # spew forth all cheesiness
     def select_all_motivationals():
         cursor.execute("SELECT * FROM motivational_quotes")
         data = cursor.fetchall()
         return data
 
     @staticmethod
-    #select a single joke based on the joke's ID
+    # select a single joke based on the joke's ID
     def select_a_motivational(givenMotivationalID):
         cursor.execute("SELECT * FROM motivational_quotes where motivationalID = ?", [givenMotivationalID]) #requires list literal [ ... ]
         data = cursor.fetchall()
@@ -134,3 +134,15 @@ class Database():
         dbconn.commit()
 
 ############ E N D __ M O T I V A T I O N A L __ M E T H O D S ############
+
+
+############ B E G I N __ MOOD TRACKER__ M E T H O D S ############
+
+    # method to output user's mood log
+    def retrieve_userMoods(selectUser):
+        cursor.execute("SELECT t.calenderDate, m.mood "
+                       "FROM mood_tracker t INNER JOIN moods m "
+                       "ON t.moodID = m.moodID "
+                       "WHERE userID = ?", [selectUser])
+        mood_data = cursor.fetchall()
+        return mood_data

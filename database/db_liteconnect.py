@@ -47,7 +47,7 @@ class Database():
     # this method will be called when an admin wants to delete a user account
     @staticmethod
     def remove_userID(removeID):
-        cursor.execute("DELETE FROM user WHERE id = ?", [removeID])
+        cursor.execute("DELETE FROM user WHERE userID = ?", [removeID])
         dbconn.commit()
 
 

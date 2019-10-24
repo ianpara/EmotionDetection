@@ -5,8 +5,16 @@ import click
 from flask import current_app, g
 from flask.cli import with_appcontext
 
+from flask_login import (
+    LoginManager,
+    current_user,
+    login_required,
+    login_user,
+    logout_user,
+)
+
 # Open database connection
-dbconn = sqlite3.connect("sqlite_db", detect_types=sqlite3.PARSE_DECLTYPES)
+dbconn = sqlite3.connect("sqlite_db", detect_types=sqlite3.PARSE_DECLTYPES, check_same_thread=False)
 # prepare a cursor object using cursor() method
 cursor = dbconn.cursor()
 
@@ -139,10 +147,12 @@ class Database():
 ############ B E G I N __ MOOD TRACKER__ M E T H O D S ############
 
     # method to output user's mood log
-    def retrieve_userMoods(selectUser):
+    @staticmethod
+    def retrieve_userMoods():
         cursor.execute("SELECT t.calenderDate, m.mood "
                        "FROM mood_tracker t INNER JOIN moods m "
                        "ON t.moodID = m.moodID "
-                       "WHERE userID = ?", [selectUser])
+                       "WHERE userID = (SELECT userID FROM user WHERE googleID = ?)", [current_user.id])
         mood_data = cursor.fetchall()
-        return mood_data
+        print(mood_data)
+        # return mood_data

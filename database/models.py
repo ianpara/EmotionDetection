@@ -42,3 +42,23 @@ class User(UserMixin):
             user_id
         )
         db.commit()
+
+class Mood():
+    def _init_(self, id_, mood, date):
+        self.UserID = id_
+        self.moodID = mood
+        self.calenderDate = date
+
+    @staticmethod
+    def getMood(user_id):
+        db = get_db()
+        mood = db.execute(
+            "SELECT * FROM mood_tracker WHERE userID = ?", (user_id,)
+        ).fetchall()
+        if not mood:
+            return None
+
+        mood = Mood(
+            id_=mood[0], mood=user[1], date=user[2]
+        )
+        return mood

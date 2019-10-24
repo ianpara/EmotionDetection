@@ -18,8 +18,9 @@ import requests
 
 # Internal imports
 from database.db import init_db_command
-from database.user import User
-from audio.record import start_recording
+from database.models import User
+from database.models import Mood
+from audio.test import predict_mood
 
 # Google Login Configuration
 # FUTURE FIX - make variables env variables and not shown here
@@ -131,8 +132,7 @@ def callback():
     else:
         return "User email not available or not verified by Google.", 400
 
-    # Create a user in your db with the information provided
-    # by Google
+    # Create a user in your db with the information provided by Google
     user = User(
         id_=unique_id, name=users_name, email=users_email, profile_pic=picture
     )
@@ -173,7 +173,7 @@ def record():
 # background process happening without any refreshing
 @app.route('/start_record')
 def start_record():
-    start_recording()
+    predict_mood()
     return "nothing"
 
 

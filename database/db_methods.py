@@ -149,10 +149,10 @@ class Database():
     # method to output user's mood log
     @staticmethod
     def retrieve_userMoods():
-        cursor.execute("SELECT t.calenderDate, m.mood "
-                       "FROM mood_tracker t INNER JOIN moods m "
-                       "ON t.moodID = m.moodID "
-                       "WHERE userID = (SELECT userID FROM user WHERE googleID = ?)", [current_user.id])
+        cursor.execute("SELECT t.calenderDate, m.mood "             # select date from mood_tracker table & mood from mood table
+                       "FROM mood_tracker t INNER JOIN moods m "    # join attributes from two tables 
+                       "ON t.moodID = m.moodID "                    # on the condition that the records have the same moodID
+                       "WHERE userID = (SELECT userID FROM user WHERE googleID = ?)", [current_user.id])    # do this for the logged in user
         mood_data = cursor.fetchall()
         print(mood_data)
         # return mood_data

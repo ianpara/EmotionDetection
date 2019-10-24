@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0d38071-0ab7-4fd2-bcae-1d7bb86d0509" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/sqlite_db" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite_db" afterDir="false" />
-    </list>
+    <list default="true" id="b0d38071-0ab7-4fd2-bcae-1d7bb86d0509" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +141,7 @@
       <workItem from="1571339018383" duration="385000" />
       <workItem from="1571339691875" duration="7432000" />
       <workItem from="1571756141628" duration="1352000" />
-      <workItem from="1571945047253" duration="2748000" />
+      <workItem from="1571945047253" duration="3368000" />
     </task>
     <servers />
   </component>

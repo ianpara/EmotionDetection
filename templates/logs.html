@@ -1,8 +1,69 @@
+<!DOCTYPE html>
+<html>
 {% extends "home_layout.html" %}
 {% from "macros.html" import nav_link2 with context %}
 {% block content %}
+<head>
+    <style>
+    table, th, td {
+    border: 5px, white;
+    border-collapse: collapse:
+    }
+    th, td {
+    padding: 15px;
+    }
+    </style>
 
-<h2>LOG PAGE</h2>
+</head>
+<h2>Log Page</h2>
+<br>
+<p>Hello, {{ current_user.name}}! You can view your past history or moods here! </p>
+<br>
+
+<table>
+    <thead>
+    <tr>
+        <th style="color:white;">Date</th>
+        <th style="color:white;">Mood</th>
+    </tr>
+</thead>
+    <tbody>
+    <tr>
+        <td style="color:white;">filler</td>
+        <td style="color:white;">filler</td>
+    </tr>
+
+    %for row in rows:
+<tr>
+    %for col in row:
+    <td style="color:white;"> {{col}}</td>
+    %end
+</tr>
+    </tbody>
+
+
+</table>
+
+
+
+{% endblock %}
+
+
+{% block script %}
+<script type=text/javascript>
+        $(function() {
+          $('a#record').bind('click', function() {
+            $.getJSON('/start_record',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+</script>
+{% endblock %}
+</html>
+
 
 {% endblock %}
 

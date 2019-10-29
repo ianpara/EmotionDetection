@@ -7,8 +7,3 @@ CREATE TABLE user (
   REFERENCES mood (user_id)
 );
 
-CREATE TABLE mood (
-  mood_id TEXT PRIMARY KEY,
-  user_id TEXT NOT NULL,
-  recording TEXT UNIQUE NOT NULL
-);

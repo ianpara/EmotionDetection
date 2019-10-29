@@ -1,10 +1,7 @@
-
-__pycache__/app.cpython-37.pyc
-__pycache__/db.cpython-37.pyc
-__pycache__/user.cpython-37.pyc
-/venv
-/sqlite_db
-
+virtual
+venv
+sqlite_db
+.idea/
 
 # got the following from a GitHub repository found at:
 # https://github.com/github/gitignore/blob/master/Python.gitignore
@@ -135,17 +132,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-
-

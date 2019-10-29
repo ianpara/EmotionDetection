@@ -1,6 +1,7 @@
 virtual
 venv
 sqlite_db
+.idea/
 
 # got the following from a GitHub repository found at:
 # https://github.com/github/gitignore/blob/master/Python.gitignore

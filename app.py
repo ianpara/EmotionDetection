@@ -4,7 +4,7 @@ import json
 import os
 import sqlite3
 
-#from db_connect import Database #mysql local db
+from database.db_methods import Database #mysql local db
 
 # Third-party libraries
 from flask import Flask, redirect, request, url_for, render_template

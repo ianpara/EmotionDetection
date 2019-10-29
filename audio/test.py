@@ -7,15 +7,8 @@ from array import array
 from struct import pack
 from sklearn.neural_network import MLPClassifier
 
-from flask_login import (
-    LoginManager,
-    current_user,
-    login_required,
-    login_user,
-    logout_user,
-)
-
 from audio.utils import extract_feature
+from database.models import Mood
 
 from database.db import get_db
 
@@ -144,10 +137,4 @@ def predict_mood():
     result = model.predict(features)[0]
     # show the result !
     print("result:", result)
-    db = get_db()
-    db.execute(
-        "INSERT INTO mood_tracker(userID, moodID, calenderDate) "
-        "VALUES (?, ?,?)",
-        (current_user.userID, result, "Today"),
-    )
-    db.commit()
+    Mood.createMood(result)

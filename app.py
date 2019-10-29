@@ -23,11 +23,11 @@ import requests
 # Internal imports
 from database.db import init_db_command
 from database.user import User
-<<<<<<< HEAD
-from database.db_liteconnect import Database #our own dblite connection
-=======
+
+#from database.db_liteconnect import Database #our own dblite connection
+
 from database.db_methods import Database #our own dblite connection with db methods
->>>>>>> nicolemurt
+
 
 #from audio.record import start_recording
 

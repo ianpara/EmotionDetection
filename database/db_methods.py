@@ -144,7 +144,7 @@ class Database():
 ############ E N D __ M O T I V A T I O N A L __ M E T H O D S ############
 
 
-############ B E G I N __ MOOD TRACKER__ M E T H O D S ############
+############ B E G I N __ M O O D __ T R A C K E R __ M E T H O D S ############
 
     # method to output user's mood log
     @staticmethod

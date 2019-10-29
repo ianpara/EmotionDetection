@@ -154,5 +154,5 @@ class Database():
                        "ON t.moodID = m.moodID "                    # on the condition that the records have the same moodID
                        "WHERE userID = (SELECT userID FROM user WHERE googleID = ?)", [current_user.id])    # do this for the logged in user
         mood_data = cursor.fetchall()
-        print(mood_data)
-        # return mood_data
+        #print(mood_data)
+        return mood_data

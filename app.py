@@ -198,9 +198,9 @@ def start_record():
 @login_required
 def logs():
     # test mood_tracker method
-    Database.retrieve_userMoods()
+    mood_data_returned = Database.retrieve_userMoods()
 
-    return render_template('logs.html', title="Logs")
+    return render_template('logs.html', title="Logs", rows=mood_data_returned)
 
 
 @app.route('/account')

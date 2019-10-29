@@ -4,8 +4,6 @@ import json
 import os
 import sqlite3
 
-from database.db_methods import Database #mysql local db
-
 # Third-party libraries
 from flask import Flask, redirect, request, url_for, render_template
 from flask_login import (
@@ -23,9 +21,6 @@ import requests
 # Internal imports
 from database.db import init_db_command
 from database.user import User
-
-#from database.db_liteconnect import Database #our own dblite connection
-
 from database.db_methods import Database #our own dblite connection with db methods
 
 

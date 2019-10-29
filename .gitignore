@@ -16,3 +16,7 @@
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc

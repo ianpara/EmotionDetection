@@ -5,8 +5,16 @@ import click
 from flask import current_app, g
 from flask.cli import with_appcontext
 
+from flask_login import (
+    LoginManager,
+    current_user,
+    login_required,
+    login_user,
+    logout_user,
+)
+
 # Open database connection
-dbconn = sqlite3.connect("sqlite_db", detect_types=sqlite3.PARSE_DECLTYPES)
+dbconn = sqlite3.connect("sqlite_db", detect_types=sqlite3.PARSE_DECLTYPES, check_same_thread=False)
 # prepare a cursor object using cursor() method
 cursor = dbconn.cursor()
 
@@ -47,7 +55,7 @@ class Database():
     # this method will be called when an admin wants to delete a user account
     @staticmethod
     def remove_userID(removeID):
-        cursor.execute("DELETE FROM user WHERE id = ?", [removeID])
+        cursor.execute("DELETE FROM user WHERE userID = ?", [removeID])
         dbconn.commit()
 
 
@@ -55,14 +63,14 @@ class Database():
 
 ############ B E G I N __ J O K E __ M E T H O D S ############
     @staticmethod
-    #spew forth all cheesiness
+    # spew forth all cheesiness
     def select_all_jokes():
         cursor.execute("SELECT * FROM jokes")
         data = cursor.fetchall()
         return data
 
     @staticmethod
-    #select a single joke based on the joke's ID
+    # select a single joke based on the joke's ID
     def select_a_joke(givenJokeID):
         cursor.execute("SELECT * FROM jokes where jokeID = ?", [givenJokeID]) #requires list literal [ ... ]
         data = cursor.fetchall()
@@ -95,7 +103,7 @@ class Database():
 
 
     #@staticmethod
-    #def search_joke_tracked(userID, jokeID):
+    # def search_joke_tracked(userID, jokeID):
         # TO DO
 ############ E N D __ J O K E __ T R A C K E R __ M E T H O D S ############
 
@@ -103,14 +111,14 @@ class Database():
 ############ B E G I N __ M O T I V A T I O N A L __ M E T H O D S ############
 
     @staticmethod
-    #spew forth all cheesiness
+    # spew forth all cheesiness
     def select_all_motivationals():
         cursor.execute("SELECT * FROM motivational_quotes")
         data = cursor.fetchall()
         return data
 
     @staticmethod
-    #select a single joke based on the joke's ID
+    # select a single joke based on the joke's ID
     def select_a_motivational(givenMotivationalID):
         cursor.execute("SELECT * FROM motivational_quotes where motivationalID = ?", [givenMotivationalID]) #requires list literal [ ... ]
         data = cursor.fetchall()
@@ -134,3 +142,17 @@ class Database():
         dbconn.commit()
 
 ############ E N D __ M O T I V A T I O N A L __ M E T H O D S ############
+
+
+############ B E G I N __ MOOD TRACKER__ M E T H O D S ############
+
+    # method to output user's mood log
+    @staticmethod
+    def retrieve_userMoods():
+        cursor.execute("SELECT t.calenderDate, m.mood "             # select date from mood_tracker table & mood from mood table
+                       "FROM mood_tracker t INNER JOIN moods m "    # join attributes from two tables 
+                       "ON t.moodID = m.moodID "                    # on the condition that the records have the same moodID
+                       "WHERE userID = (SELECT userID FROM user WHERE googleID = ?)", [current_user.id])    # do this for the logged in user
+        mood_data = cursor.fetchall()
+        print(mood_data)
+        # return mood_data

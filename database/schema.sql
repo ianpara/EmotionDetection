@@ -1,9 +1,9 @@
 CREATE TABLE "user" (
-	"id"	TEXT NOT NULL UNIQUE,
-	"name"	TEXT NOT NULL,
-	"email"	TEXT NOT NULL,
-	"profile_pic"	TEXT NOT NULL,
-	PRIMARY KEY("id")
+	"googleID"	TEXT UNIQUE,
+	"name"	TEXT,
+	"email"	TEXT UNIQUE,
+	"profile_pic"	TEXT,
+	"userID"	INTEGER PRIMARY KEY AUTOINCREMENT
 );
 
 CREATE TABLE "sqlite_sequence" (
@@ -12,10 +12,11 @@ CREATE TABLE "sqlite_sequence" (
 );
 
 CREATE TABLE "motivational_tracker" (
-	"userID"	TEXT NOT NULL,
-	"motivationalID"	INTEGER NOT NULL,
+	"userID"	INTEGER,
+	"motivationalID"	INTEGER,
 	FOREIGN KEY("motivationalID") REFERENCES "motivational_quotes"("motivationalID") ON UPDATE CASCADE,
-	FOREIGN KEY("userID") REFERENCES "user"("id") ON UPDATE CASCADE
+	FOREIGN KEY("userID") REFERENCES "user"("userID") ON UPDATE CASCADE,
+	PRIMARY KEY("userID","motivationalID")
 );
 
 CREATE TABLE "motivational_quotes" (
@@ -30,11 +31,12 @@ CREATE TABLE "moods" (
 );
 
 CREATE TABLE "mood_tracker" (
-	"userID"	TEXT,
+	"userID"	INTEGER,
 	"moodID"	INTEGER,
-	"calenderDate"	date NOT NULL,
+	"calenderDate"	date,
 	FOREIGN KEY("moodID") REFERENCES "moods"("moodID") ON UPDATE CASCADE,
-	FOREIGN KEY("userID") REFERENCES "user"("id") ON UPDATE CASCADE
+	FOREIGN KEY("userID") REFERENCES "user"("userID") ON UPDATE CASCADE,
+	PRIMARY KEY("userID","moodID","calenderDate")
 );
 
 CREATE TABLE "jokes" (
@@ -43,15 +45,17 @@ CREATE TABLE "jokes" (
 );
 
 CREATE TABLE "joke_tracker" (
-	"userID"	TEXT NOT NULL,
-	"jokeID"	INTEGER NOT NULL,
+	"userID"	INTEGER,
+	"jokeID"	INTEGER,
 	FOREIGN KEY("jokeID") REFERENCES "jokes"("jokeID") ON UPDATE CASCADE,
-	FOREIGN KEY("userID") REFERENCES "user"("id") ON UPDATE CASCADE
+	PRIMARY KEY("userID","jokeID"),
+	FOREIGN KEY("userID") REFERENCES "user"("userID") ON UPDATE CASCADE
 );
 
 CREATE TABLE "contacts" (
-	"userID"	TEXT NOT NULL UNIQUE,
-	"contact_number"	TEXT NOT NULL,
+	"userID"	INTEGER,
+	"contact_number"	TEXT,
 	"contact_name"	TEXT NOT NULL,
-	FOREIGN KEY("userID") REFERENCES "user"("id") ON UPDATE CASCADE
+	FOREIGN KEY("userID") REFERENCES "user"("userID") ON UPDATE CASCADE,
+	PRIMARY KEY("userID","contact_number")
 );

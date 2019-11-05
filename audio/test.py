@@ -1,4 +1,4 @@
-#import pyaudio
+import pyaudio
 import os
 import wave
 import pickle
@@ -142,7 +142,7 @@ def test_predict_mood():
     # load the saved model (after training)
     model = pickle.load(open("audio/result/mlp_classifier.model", "rb"))
     # extract features and reshape it
-    filename = #"C:/Users/Ian/Documents/GitHub/EmotionDetection/EmotionDetection/Dataset/Actor_24/03-01-01-01-02-02-24.wav"
+    filename = "C:/Users/Ian/Documents/GitHub/EmotionDetection/EmotionDetection/Dataset/Actor_24/03-01-01-01-02-02-24.wav"
     features = extract_feature(filename, mfcc=True, chroma=True, mel=True).reshape(1, -1)
     # predict
     result = model.predict(features)[0]

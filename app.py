@@ -53,7 +53,7 @@ except sqlite3.OperationalError:
     pass
 
 
-print(Database.select_all_users())
+#print(Database.select_all_users())
 #Database.remove_joke_text("I was wondering why the baseball was getting closer and then it hit me.")
 
 client = WebApplicationClient(GOOGLE_CLIENT_ID)
@@ -198,8 +198,8 @@ def start_record():
 @login_required
 def logs():
     # test mood_tracker method
-    records = Database.retrieve_userMoods()
-    print (records)
+    #records = database.retrieve_userMoods()
+    #print (records)
     #return render_template('logs.html', title="Logs", variableX="Hello, World (and Nicole)!")
     return render_template('logs.html', title="Logs")
 

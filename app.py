@@ -188,10 +188,13 @@ def record():
     return render_template('record.html', title="Record Mood")
 
 # background process happening without any refreshing
-@app.route('/start_record')
+@app.route('/start_record', methods=['POST'])
 def start_record():
     #start_recording()
-    return "nothing"
+    #return "nothing"
+    output = predict_mood()
+    return output
+
 
 
 @app.route('/logs')

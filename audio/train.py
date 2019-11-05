@@ -24,7 +24,7 @@ model_params = {
     'epsilon': 1e-08,
     'hidden_layer_sizes': (300,),
     'learning_rate': 'adaptive',
-    'max_iter': 1000,
+    'max_iter': 500,
 }
 # initialize Multi Layer Perceptron classifier
 # with best parameters ( so far )

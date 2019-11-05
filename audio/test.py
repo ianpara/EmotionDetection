@@ -75,9 +75,7 @@ def record():
     it without getting chopped off.
     """
     p = pyaudio.PyAudio()
-    stream = p.open(format=FORMAT, channels=1, rate=RATE,
-        input=True, output=True,
-        frames_per_buffer=CHUNK_SIZE)
+    stream = p.open(format=FORMAT, channels=1, rate=RATE, input=True, output=True, frames_per_buffer=CHUNK_SIZE)
 
     num_silent = 0
     snd_started = False
@@ -137,4 +135,4 @@ def predict_mood():
     result = model.predict(features)[0]
     # show the result !
     print("result:", result)
-    Mood.createMood(result)
+    return result

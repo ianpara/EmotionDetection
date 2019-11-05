@@ -79,7 +79,7 @@ class User(UserMixin):
         )
         db.commit()
 
-<<<<<<< HEAD:database/models.py
+
 class Mood():
     def _init_(self, id_, mood, date):
         self.UserID = id_
@@ -99,7 +99,7 @@ class Mood():
             id_=mood[0], mood=user[1], date=user[2]
         )
         return mood
-=======
+
 
 
     # @staticmethod
@@ -115,4 +115,4 @@ class Mood():
     #         id_=user[0], name=user[1], email=user[2], profile_pic=user[3]
     #     )
     #     return user
->>>>>>> nicolemurt:database/user.py
+

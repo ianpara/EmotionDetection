@@ -199,7 +199,7 @@ def start_record():
 def logs():
     # test mood_tracker method
     mood_data_returned = Database.retrieve_userMoods()
-
+    print(mood_data_returned)
     return render_template('logs.html', title="Logs", rows=mood_data_returned)
 
 

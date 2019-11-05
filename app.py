@@ -22,11 +22,10 @@ import requests
 
 # Internal imports
 from database.db import init_db_command
-from database.user import User
-from database.db_methods import Database #our own dblite connection with db methods
-
-
-#from audio.record import start_recording
+from database.models import User
+from database.models import Mood
+from audio.test import predict_mood
+from audio.test import test_predict_mood
 
 # Google Login Configuration
 # FUTURE FIX - make variables env variables and not shown here
@@ -188,10 +187,11 @@ def record():
     return render_template('record.html', title="Record Mood")
 
 # background process happening without any refreshing
-@app.route('/start_record')
+@app.route('/start_record', methods=['POST'])
 def start_record():
-    #start_recording()
-    return "nothing"
+    # output = test_predict_mood()
+    output = predict_mood()
+    return output
 
 
 @app.route('/logs')

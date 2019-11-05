@@ -21,6 +21,7 @@ from database.db import init_db_command
 from database.models import User
 from database.models import Mood
 from audio.test import predict_mood
+from audio.test import test_predict_mood
 
 # Google Login Configuration
 # FUTURE FIX - make variables env variables and not shown here
@@ -173,6 +174,7 @@ def record():
 # background process happening without any refreshing
 @app.route('/start_record', methods=['POST'])
 def start_record():
+    # output = test_predict_mood()
     output = predict_mood()
     return output
 

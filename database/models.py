@@ -65,7 +65,7 @@ class User(UserMixin):
     def delete(user_id):
         db = get_db()
         db.execute(
-            "DELETE FROM user WHERE id = ?",
+            "DELETE FROM user WHERE googleID = ?",
             user_id
         )
         db.commit()

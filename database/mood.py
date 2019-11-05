@@ -11,7 +11,7 @@ def getMood(user_id):
 def create(id_, name, email, profile_pic):
     db = get_db()
     db.execute(
-        "INSERT INTO user (id, name, email, profile_pic) "
+        "INSERT INTO user (googleID, name, email, profile_pic) "
         "VALUES (?, ?, ?, ?)",
         (id_, name, email, profile_pic),
     )
@@ -22,7 +22,7 @@ def create(id_, name, email, profile_pic):
 def delete(user_id):
     db = get_db()
     db.execute(
-        "DELETE FROM user WHERE id = ?",
+        "DELETE FROM user WHERE googleID = ?",
         user_id
     )
     db.commit()

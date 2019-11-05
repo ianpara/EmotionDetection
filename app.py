@@ -200,7 +200,7 @@ def logs():
     records = Database.retrieve_userMoods()
     print (records)
     #return render_template('logs.html', title="Logs", variableX="Hello, World (and Nicole)!")
-    return render_template('logs.html', title="Logs")
+    return render_template('logs.html', title="Logs", records)
 
 
 @app.route('/account')

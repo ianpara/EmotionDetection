@@ -5,7 +5,12 @@ import click
 from flask import current_app, g
 from flask.cli import with_appcontext
 
+# g is a special object that is unique for each request.
+# It is used to store data that might be accessed by multiple functions during the request.
+# The connection is stored & reused instead of creating a new connection if get_db is called a second time in the
+# same request.
 def get_db():
+    # check to see if there is already a connection to the db
     if "db" not in g:
         g.db = sqlite3.connect(
             "sqlite_db", detect_types=sqlite3.PARSE_DECLTYPES
@@ -20,6 +25,7 @@ def close_db(e=None):
     if db is not None:
         db.close()
 
+# initialize the db
 def init_db():
     db = get_db()
 

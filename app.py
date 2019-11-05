@@ -4,6 +4,8 @@ import json
 import os
 import sqlite3
 
+#from db_connect import Database #mysql local db
+
 # Third-party libraries
 from flask import Flask, redirect, request, url_for, render_template
 from flask_login import (
@@ -13,14 +15,23 @@ from flask_login import (
     login_user,
     logout_user,
 )
+
+
 from oauthlib.oauth2 import WebApplicationClient
 import requests
 
 # Internal imports
 from database.db import init_db_command
+<<<<<<< HEAD
 from database.models import User
 from database.models import Mood
 from audio.test import predict_mood
+=======
+from database.user import User
+from database.db_methods import Database #our own dblite connection with db methods
+
+#from audio.record import start_recording
+>>>>>>> nicolemurt
 
 # Google Login Configuration
 # FUTURE FIX - make variables env variables and not shown here
@@ -47,15 +58,18 @@ except sqlite3.OperationalError:
     # Assume it's already been created
     pass
 
-# OAuth 2 client setup
+
+print(Database.select_all_users())
+#Database.remove_joke_text("I was wondering why the baseball was getting closer and then it hit me.")
+
 client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
 
 # Flask-Login helper to retrieve a user from our db
 @login_manager.user_loader
 def load_user(user_id):
+    print(User.get(user_id))
     return User.get(user_id)
-
 
 # use decorators to link the function to a url
 @app.route('/')
@@ -140,6 +154,14 @@ def callback():
     # Doesn't exist? Add it to the database.
     if not User.get(unique_id):
         User.create(unique_id, users_name, users_email, picture)
+        print("just finished calling create method")
+        # User.create_ED_users(unique_id)
+        # print("just finished calling create_ED_users method in same if block")
+
+
+   # print("about to call create_ED_users method")
+   # if not User.get_ED_user(unique_id):
+    #    User.create_ED_users()
 
     # Begin user session by logging the user in
     login_user(user)
@@ -173,14 +195,21 @@ def record():
 # background process happening without any refreshing
 @app.route('/start_record')
 def start_record():
+<<<<<<< HEAD
     predict_mood()
+=======
+    #start_recording()
+>>>>>>> nicolemurt
     return "nothing"
 
 
 @app.route('/logs')
 @login_required
 def logs():
-    return render_template('logs.html', title="Logs")
+    # test mood_tracker method
+    mood_data_returned = Database.retrieve_userMoods()
+
+    return render_template('logs.html', title="Logs", rows=mood_data_returned)
 
 
 @app.route('/account')

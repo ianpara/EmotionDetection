@@ -137,3 +137,4 @@ dmypy.json
 database/__pycache__/db.cpython-37.pyc
 database/__pycache__/db_methods.cpython-37.pyc
 
+.idea/dataSources.local.xml

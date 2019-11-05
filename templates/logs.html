@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-{% extends "home_layout.html" %}
-{% from "macros.html" import nav_link2 with context %}
-{% block content %}
 
-<h2>LOG PAGE</h2>
-
-{% endblock %}
-=======
 <!DOCTYPE html>
 <html>
 {% extends "home_layout.html" %}
@@ -39,13 +31,14 @@
     <tbody>
     <tr>
         <td style="color:white;">filler</td>
-        <td style="color:white;">{{ mood_data_returned }}</td>
+        <td style="color:white;">filler</td>
     </tr>
 
+    %for row in rows:
 <tr>
-
-    <td style="color:white;"> </td>
-
+    %for col in row:
+    <td style="color:white;"> {{col}}</td>
+    %end
 </tr>
     </tbody>
 
@@ -71,4 +64,3 @@
 </script>
 {% endblock %}
 </html>
->>>>>>> nicolemurt

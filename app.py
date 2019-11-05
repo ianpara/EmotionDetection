@@ -25,6 +25,7 @@ from database.db import init_db_command
 from database.user import User
 from database.db_methods import Database #our own dblite connection with db methods
 
+
 #from audio.record import start_recording
 
 # Google Login Configuration
@@ -140,8 +141,7 @@ def callback():
     else:
         return "User email not available or not verified by Google.", 400
 
-    # Create a user in your db with the information provided
-    # by Google
+    # Create a user in your db with the information provided by Google
     user = User(
         id_=unique_id, name=users_name, email=users_email, profile_pic=picture
     )
@@ -201,6 +201,12 @@ def logs():
     mood_data_returned = Database.retrieve_userMoods()
     print(mood_data_returned)
     return render_template('logs.html', title="Logs", rows=mood_data_returned)
+
+    #records = Database.retrieve_userMoods()
+    #print (records)
+    #return render_template('logs.html', title="Logs", variableX="Hello, World (and Nicole)!")
+    #return render_template('logs.html', title="Logs")
+
 
 
 @app.route('/account')

@@ -1,36 +1,70 @@
 antiorm==1.2.1
 asn1crypto==0.24.0
+<<<<<<< HEAD
+audioread==2.1.8
+=======
 autopep8==1.4.3
+>>>>>>> nicolemurt
 certifi==2019.9.11
 cffi==1.12.3
 chardet==3.0.4
 Click==7.0
 cryptography==2.7
+<<<<<<< HEAD
+cycler==0.10.0
+decorator==4.4.0
+Flask==1.0.2
+Flask-Login==0.4.1
+=======
 Flask==1.0.2
 Flask-Login==0.4.1
 future==0.17.1
 gunicorn==19.9.0
+>>>>>>> nicolemurt
 idna==2.8
 itsdangerous==1.1.0
 jedi==0.13.2
 Jinja2==2.10.1
+<<<<<<< HEAD
+joblib==0.14.0
+kiwisolver==1.1.0
+librosa==0.7.1
+llvmlite==0.30.0
+MarkupSafe==1.1.1
+matplotlib==3.1.1
+numba==0.46.0
+numpy==1.17.2
+oauthlib==3.0.1
+PyAudio==0.2.11
+=======
 MarkupSafe==1.1.1
 mccabe==0.6.1
 oauthlib==3.0.1
 parso==0.3.2
 pluggy==0.8.1
 pycodestyle==2.5.0
+>>>>>>> nicolemurt
 pycparser==2.19
 pydocstyle==3.0.0
 pyflakes==2.1.0
 pyOpenSSL==19.0.0
+<<<<<<< HEAD
+requests==2.21.0
+resampy==0.2.2
+scikit-learn==0.21.3
+scipy==1.3.1
+six==1.12.0
+sklearn==0.0
+=======
 python-jsonrpc-server==0.1.2
 python-language-server==0.22.0
 requests==2.21.0
 rope==0.11.0
 six==1.12.0
 snowballstemmer==1.2.1
+>>>>>>> nicolemurt
 sounddevice==0.3.14
 urllib3==1.24.3
+uwsgi
 Werkzeug==0.15.6
 yapf==0.25.0

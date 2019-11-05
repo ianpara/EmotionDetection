@@ -146,6 +146,9 @@ class Database():
 
 ############ B E G I N __ MOOD TRACKER__ M E T H O D S ############
 
+############ B E G I N __ M O O D __ T R A C K E R __ M E T H O D S ############
+
+
     # method to output user's mood log
     @staticmethod
     def retrieve_userMoods():
@@ -154,5 +157,7 @@ class Database():
                        "ON t.moodID = m.moodID "                    # on the condition that the records have the same moodID
                        "WHERE userID = (SELECT userID FROM user WHERE googleID = ?)", [current_user.id])    # do this for the logged in user
         mood_data = cursor.fetchall()
+
         #print(mood_data)
         return mood_data
+

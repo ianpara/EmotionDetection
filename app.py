@@ -197,7 +197,8 @@ def start_record():
 @login_required
 def logs():
     # test mood_tracker method
-    Database.retrieve_userMoods()
+    records = Database.retrieve_userMoods()
+    print (records)
     #return render_template('logs.html', title="Logs", variableX="Hello, World (and Nicole)!")
     return render_template('logs.html', title="Logs")
 

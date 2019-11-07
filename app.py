@@ -176,7 +176,7 @@ def record():
 @app.route('/start_record', methods=['POST'])
 def start_record():
     # output = test_predict_mood()
-    output = predict_mood()
+    output = test_predict_mood()
     return output
 
 

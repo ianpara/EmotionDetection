@@ -13,7 +13,7 @@ class User(UserMixin):
     def get(user_id):
         db = get_db()
         user = db.execute(
-            "SELECT userID FROM user WHERE id = ?", (user_id,)
+            "SELECT * FROM user WHERE id = ?", (user_id,)
         ).fetchone()
         if not user:
             return None
@@ -43,6 +43,15 @@ class User(UserMixin):
         )
         db.commit()
 
+    @staticmethod
+    def getID(user_id):
+        db = get_db()
+        user = db.execute(
+            "SELECT userID FROM user WHERE id like ?", (user_id,)
+        ).fetchone()
+        if not user:
+            return None
+
 class Mood():
     def _init_(self, id_, mood, date):
         self.UserID = id_
@@ -67,7 +76,7 @@ class Mood():
     def create(id_, mood, date):
         db = get_db()
         db.execute(
-            "INSERT INTO user (userID, moodID, calenderDate) "
+            "INSERT INTO mood_tracker (userID, moodID, calenderDate) "
             "VALUES (?, ?, ?)",
             (id_, mood, date),
         )

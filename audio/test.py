@@ -6,6 +6,7 @@ from sys import byteorder
 from array import array
 from struct import pack
 from sklearn.neural_network import MLPClassifier
+from datetime import date
 
 from audio.utils import extract_feature
 from database.models import Mood
@@ -135,6 +136,9 @@ def predict_mood():
     result = model.predict(features)[0]
     # show the result !
     print("result:", result)
+    # get date
+    today = date.today()
+    Mood.create()
     return result
 
 
@@ -142,7 +146,7 @@ def test_predict_mood():
     # load the saved model (after training)
     model = pickle.load(open("audio/result/mlp_classifier.model", "rb"))
     # extract features and reshape it
-    filename = #"C:/Users/Ian/Documents/GitHub/EmotionDetection/EmotionDetection/Dataset/Actor_24/03-01-01-01-02-02-24.wav"
+    filename = "C:/Users/Ian/Documents/GitHub/EmotionDetection/EmotionDetection/Dataset/Actor_24/03-01-01-01-02-02-24.wav"
     features = extract_feature(filename, mfcc=True, chroma=True, mel=True).reshape(1, -1)
     # predict
     result = model.predict(features)[0]

@@ -50,7 +50,7 @@ class Mood():
         self.calenderDate = date
 
     @staticmethod
-    def getMood(user_id):
+    def get(user_id):
         db = get_db()
         mood = db.execute(
             "SELECT * FROM mood_tracker WHERE userID = ?", (user_id,)
@@ -62,3 +62,13 @@ class Mood():
             id_=mood[0], mood=user[1], date=user[2]
         )
         return mood
+
+    @staticmethod
+    def create(id_, mood, date):
+        db = get_db()
+        db.execute(
+            "INSERT INTO user (userID, moodID, calenderDate) "
+            "VALUES (?, ?, ?)",
+            (id_, mood, date),
+        )
+        db.commit()

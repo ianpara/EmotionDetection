@@ -22,8 +22,8 @@ import requests
 
 # Internal imports
 from database.db import init_db_command
-from database.models import User
-from database.models import Mood
+from database.user import User
+from database.models import Database
 from audio.test import predict_mood
 from audio.test import test_predict_mood
 
@@ -53,9 +53,6 @@ except sqlite3.OperationalError:
     pass
 
 
-#print(Database.select_all_users())
-#Database.remove_joke_text("I was wondering why the baseball was getting closer and then it hit me.")
-
 client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
 
@@ -65,7 +62,8 @@ def load_user(user_id):
     print(User.get(user_id))
     return User.get(user_id)
 
-# use decorators to link the function to a url
+
+# either login page or home page depending if user is logged in
 @app.route('/')
 def home():
     if current_user.is_authenticated:
@@ -152,39 +150,35 @@ def callback():
         # User.create_ED_users(unique_id)
         # print("just finished calling create_ED_users method in same if block")
 
-
-   # print("about to call create_ED_users method")
-   # if not User.get_ED_user(unique_id):
-    #    User.create_ED_users()
-
     # Begin user session by logging the user in
     login_user(user)
 
     # Send user back to homepage
     return redirect(url_for("home"))
 
-
+# logout function
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     return redirect(url_for("home"))
 
-
+# contact page
 @app.route('/contact')
 def contact():
     return render_template('contact.html', title="Contact")
 
-
+# about page
 @app.route('/about')
 def about():
     return render_template('about.html', title="About")
 
-
+# record page
 @app.route('/record')
 @login_required
 def record():
     return render_template('record.html', title="Record Mood")
+
 
 # background process happening without any refreshing
 @app.route('/start_record', methods=['POST'])
@@ -193,22 +187,33 @@ def start_record():
     output = predict_mood()
     return output
 
-
-@app.route('/logs')
+# log page
+@app.route('/logs', methods=['GET', 'POST'])
 @login_required
 def logs():
-    # test mood_tracker method
-    #records = database.retrieve_userMoods()
-    #print (records)
-    #return render_template('logs.html', title="Logs", variableX="Hello, World (and Nicole)!")
-    return render_template('logs.html', title="Logs")
+    table=[] # save table as empty tuple
+    if request.method == 'POST':
+        return render_template('logs.html', title="Logs")
+    else:
+        table = Database.retrieveMoods() # puts moods inside table tuple
+        return render_template('logs.html', title="Logs", table=table)
 
-
+# account page
 @app.route('/account')
 @login_required
 def account():
     return render_template('account.html', title="My Account")
 
+
+# error pages
+@app.errorhandler(405)
+def page_not_found(e):
+    return render_template('405.html'), 405
+
+
+@app.errorhandler(401)
+def page_not_found(e):
+    return render_template('401.html'), 401
 
 
 # start the server with the 'run()' method

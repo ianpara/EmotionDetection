@@ -2,20 +2,18 @@
 {% from "macros.html" import nav_link2 with context %}
 {% block content %}
 
-<h2>RECORD PAGE</h2>
+<h2>Record Your Mood</h2>
 <br>
-<a href=# id=record>
-    <button class='btn btn-primary' id="myButton">Record</button>
-</a>
-    </br>
-    </br>
-    <p id="resultHTML"></p>
+    <br>
+    <p>Hi {{ current_user.name }}, how is your day going?</p>
+    <p>Result: <span id="resultHTML"></span></p>
 
 {% endblock %}
 
 {% block script %}
 <script>
-$('#myButton').click(function() {
+$(document).ready(function() {
+    alert("Recording");
     $.ajax({
         type:'POST',
         url: "{{ url_for('start_record') }}",

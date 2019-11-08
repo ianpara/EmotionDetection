@@ -16,51 +16,30 @@
     </style>
 
 </head>
-<h2>Log Page</h2>
-<br>
-<p>Hello, {{ current_user.name}}! You can view your past history or moods here! </p>
-<br>
-
-<table>
-    <thead>
-    <tr>
-        <th style="color:white;">Date</th>
-        <th style="color:white;">Mood</th>
-    </tr>
-</thead>
-    <tbody>
-    <tr>
-        <td style="color:white;">filler</td>
-        <td style="color:white;">filler</td>
-    </tr>
-
-    %for row in rows:
-<tr>
-    %for col in row:
-    <td style="color:white;"> {{col}}</td>
-    %end
-</tr>
-    </tbody>
-
-
-</table>
-
-
 
 {% endblock %}
 
+    <h2>Your Past Moods</h2>
+    <br>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col" style="color: white">Mood</th>
+            <th scope="col" style="color: white">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for row in table %}
+         <tr>
+                <td style="color: white">{{ row[0] }}</td>
+                <td style="color: white">{{ row[1] }}</td>
+        </tr>
+            {%  endfor %}
 
-{% block script %}
-<script type=text/javascript>
-        $(function() {
-          $('a#record').bind('click', function() {
-            $.getJSON('/start_record',
-                function(data) {
-              //do nothing
-            });
-            return false;
-          });
-        });
-</script>
+        </tbody>
+    </table>
+
 {% endblock %}
+
+</body>
 </html>

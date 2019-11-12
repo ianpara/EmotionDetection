@@ -4,11 +4,12 @@
 
     <h2>Your Past Moods</h2>
     <br>
-    <table class="table table-hover">
+    <table class="table table-hover" id="mood-table">
         <thead>
         <tr>
             <th scope="col" style="color: white">Mood</th>
             <th scope="col" style="color: white">Date</th>
+            <th scope="col" style="color: white"></th>
         </tr>
         </thead>
         <tbody>
@@ -16,9 +17,27 @@
          <tr>
                 <td style="color: white">{{ row[0] }}</td>
                 <td style="color: white">{{ row[1] }}</td>
+                <td><button class="btn btn-outline-danger" value="{{ row[2] }}" onclick="deleteRow(this)">X</button></td>
         </tr>
             {%  endfor %}
 
         </tbody>
     </table>
+{% endblock %}
+
+{% block script %}
+<script>
+function deleteRow(r) {
+    var i = r.parentNode.parentNode.rowIndex;
+    document.getElementById("mood-table").deleteRow(i);
+    {#$.ajax({#}
+    {#    type:'POST',#}
+    {#    url: "{{ url_for('delete_mood') }}",#}
+    {#    datatype: "text",#}
+    {#    success: function(){#}
+    {#        alert("Mood deleted")#}
+    {#    }#}
+    {# });#}
+}
+</script>
 {% endblock %}

@@ -3,6 +3,7 @@
 import json
 import os
 import sqlite3
+from datetime import timedelta
 
 # Third-party libraries
 from flask import Flask, redirect, request, url_for, render_template
@@ -35,6 +36,9 @@ GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid-configura
 app = Flask(__name__)
 
 app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
+app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=30)
+app.config['REMEMBER_COOKIE_SECURE'] = True
+
 
 # User session management setup
 # https://flask-login.readthedocs.io/en/latest
@@ -143,7 +147,7 @@ def callback():
         User.create(unique_id, users_name, users_email, picture)
 
     # Begin user session by logging the user in
-    login_user(user)
+    login_user(user, remember=True)
 
     # Send user back to homepage
     return redirect(url_for("home"))
@@ -189,6 +193,12 @@ def logs():
     else:
         table = Database.retrieveMoods() # puts moods inside table tuple
         return render_template('logs.html', title="Logs", table=table)
+
+# background process happening without any refreshing
+@app.route('/delete_mood', methods=['POST'])
+def delete_mood():
+    Database.removeMood()
+    return "none"
 
 # account page
 @app.route('/account')

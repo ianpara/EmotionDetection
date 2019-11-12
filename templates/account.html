@@ -2,8 +2,10 @@
 {% from "macros.html" import nav_link2 with context %}
 {% block content %}
 
-<h1>Account Page</h1>
-<p>Hello, {{ current_user.name}}! You're logged in! Email: {{ current_user.email}} ID: {{ current_user.id }}</p>
+<h1>Your Account</h1>
+    <br>
+    <p>Name: {{ current_user.name}}</p>
+    <p>Email: {{ current_user.email}}</p>
 
 
 {% endblock %}

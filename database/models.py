@@ -130,7 +130,7 @@ class Database():
     @staticmethod
     def retrieveMoods():
         id = Database.getID(current_user.id)
-        cursor.execute("SELECT mood, calenderDate FROM moods_tracker WHERE userID = ?", (id[0],))
+        cursor.execute("SELECT mood, calenderDate,moodID FROM moods_tracker WHERE userID = ?", (id[0],))
         mood_data = cursor.fetchall()
         return mood_data
 
@@ -144,3 +144,12 @@ class Database():
                         (id[0],mood,now.strftime('%B %d, %Y %H:%M')),
         )
         dbconn.commit()
+
+
+    @staticmethod
+    def removeMood(mood):
+        id = Database.getID(current_user.id)
+        cursor.execute("DELETE FROM moods_tracker WHERE moodID = ?", [mood_id])
+        dbconn.commit()
+
+

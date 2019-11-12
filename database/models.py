@@ -44,8 +44,10 @@ class Database():
     # removes a user when given ID
     # this method will be called when a user wants to delete their own account
     @staticmethod
-    def remove_user(user_id):
-        cursor.execute("DELETE FROM user WHERE userID = ?", [user_id])
+    def remove_user():
+        id = Database.getID(current_user.id)
+        cursor.execute("DELETE FROM user WHERE userID = ?", [id[0]])
+        cursor.execute("DELETE FROM moods_tracker WHERE userID = ?", [id[0]])
         dbconn.commit()
 
 ############ B E G I N __ J O K E __ M E T H O D S ############

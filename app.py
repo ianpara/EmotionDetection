@@ -178,6 +178,7 @@ def record():
 
 # background process happening without any refreshing
 @app.route('/start_record', methods=['POST'])
+@login_required
 def start_record():
     # output = test_predict_mood()
     output = predict_mood()
@@ -196,6 +197,7 @@ def logs():
 
 # background process happening without any refreshing
 @app.route('/delete_mood', methods=['POST'])
+@login_required
 def delete_mood():
     Database.removeMood()
     return "none"
@@ -205,6 +207,14 @@ def delete_mood():
 @login_required
 def account():
     return render_template('account.html', title="My Account")
+
+# background process happening without any refreshing
+@app.route('/delete_account')
+@login_required
+def delete_account():
+    Database.remove_user()
+    print ("User deleted")
+    return redirect(url_for("home"))
 
 
 # error pages

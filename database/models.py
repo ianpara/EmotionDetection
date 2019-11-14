@@ -65,7 +65,6 @@ class Database():
         data = cursor.fetchone()
         return data
 
-
     @staticmethod
     def add_joke(newJokeText):
         cursor.execute("INSERT INTO jokes(joke) VALUES (?)", [newJokeText])
@@ -103,7 +102,7 @@ class Database():
         return data
 
     @staticmethod
-    # select a single joke based on the joke's ID
+    # select a single motivational based on the motivational's ID
     def select_a_motivational(givenMotivationalID):
         cursor.execute("SELECT * FROM motivational_quotes where motivationalID = ?", [givenMotivationalID]) #requires list literal [ ... ]
         data = cursor.fetchall()
@@ -117,12 +116,12 @@ class Database():
 
 
     @staticmethod
-    def remove_joke_text(removeJokeText):
+    def remove_motivational_text(removeJokeText):
         cursor.execute("DELETE FROM motivational_quotes WHERE motivational = ?", [removeJokeText])
         dbconn.commit()
 
     @staticmethod
-    def remove_jokeID(removeJokeID):
+    def remove_motivationalID(removeJokeID):
         cursor.execute("DELETE FROM motivational_quotes WHERE motivationalID = ?", [removeJokeID])
         dbconn.commit()
 
@@ -156,13 +155,41 @@ class Database():
 
 ############ B E G I N __ M O O D __ O U T P U T __ M E T H O D S ############
 
+    # joke_count => the joke ID for the last seen joke by the current logged in user
+    # get the joke_count value, increment it
+    # return the incremented joke_count, that value will now be the id for the next joke to get outputted to user
+    @staticmethod
+    def increment_joke_counter():
+        id = Database.getID(current_user.id)                                        # this returns an array e.g. (1,)
+        cursor.execute("SELECT joke_counter FROM user WHERE userID = ?", (id[0],))  # selects the joke_counter attribute for logged in user
+        joke_count_array = cursor.fetchone()                                        # grab the first record from SELECT (array)
+        joke_count = joke_count_array[0]                                            # grab the integer from the "array"
+        joke_count += 1               # increment joke counter, this ensures that user does not see same joke more than once
+        return joke_count
+
+    # modifies the joke_counter attribute in the user table, to reflect the new last joke seen
+    @staticmethod
+    def new_jokeCount_to_DB(new_jokeCount):
+        cursor.execute("UPDATE user SET joke_counter = ?"
+                       "WHERE googleID = ?", (new_jokeCount, current_user.id))
+        dbconn.commit()
+
+
     # method to output user's mood log
+    # angry => joke
+    # happy => ?
+    # sad => motivational quotes/contacts
     @staticmethod
     def feelBetter(result):
         if result=='angry':
-            output = Database.select_a_joke(6);
+            output_jokeID = Database.increment_joke_counter()   # get the jokeID for the joke that should be outputted next
+            Database.new_jokeCount_to_DB(output_jokeID)         # update the user's joke_counter attribute
+            output = Database.select_a_joke(output_jokeID)      # output the joke for the next unseen joke
             return output[0]
-        else :
+        elif result=='happy':
             return "Not a joke"
+        else:
+            return
+
 
 

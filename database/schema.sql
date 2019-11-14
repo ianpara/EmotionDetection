@@ -3,7 +3,8 @@ CREATE TABLE "user" (
 	"name"	TEXT,
 	"email"	TEXT UNIQUE,
 	"profile_pic"	TEXT,
-	"userID"	INTEGER PRIMARY KEY AUTOINCREMENT
+	"userID"	INTEGER PRIMARY KEY AUTOINCREMENT,
+	"joke_counter"	INTEGER DEFAULT 0
 );
 
 CREATE TABLE "moods_tracker" (

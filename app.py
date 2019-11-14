@@ -178,7 +178,8 @@ def record():
 @login_required
 def start_record():
     # output = test_predict_mood()
-    output = predict_mood()
+    result = predict_mood()
+    output = Database.feelBetter(result);
     return output
 
 # log page

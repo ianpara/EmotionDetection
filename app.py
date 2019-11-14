@@ -192,13 +192,6 @@ def logs():
         table = Database.retrieveMoods() # puts moods inside table tuple
         return render_template('logs.html', title="Logs", table=table)
 
-# background process happening without any refreshing
-@app.route('/delete_mood', methods=['POST'])
-@login_required
-def delete_mood():
-    Database.removeMood()
-    return "none"
-
 # account page
 @app.route('/account')
 @login_required

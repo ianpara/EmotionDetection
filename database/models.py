@@ -61,8 +61,8 @@ class Database():
     @staticmethod
     # select a single joke based on the joke's ID
     def select_a_joke(givenJokeID):
-        cursor.execute("SELECT * FROM jokes where jokeID = ?", [givenJokeID]) #requires list literal [ ... ]
-        data = cursor.fetchall()
+        cursor.execute("SELECT joke FROM jokes where jokeID = ?", [givenJokeID]) #requires list literal [ ... ]
+        data = cursor.fetchone()
         return data
 
 
@@ -153,5 +153,16 @@ class Database():
         id = Database.getID(current_user.id)
         cursor.execute("DELETE FROM moods_tracker WHERE moodID = ?", [mood])
         dbconn.commit()
+
+############ B E G I N __ M O O D __ O U T P U T __ M E T H O D S ############
+
+    # method to output user's mood log
+    @staticmethod
+    def feelBetter(result):
+        if result=='angry':
+            output = Database.select_a_joke(6);
+            return output[0]
+        else :
+            return "Not a joke"
 
 

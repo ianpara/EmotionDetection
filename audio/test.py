@@ -6,11 +6,21 @@ from sys import byteorder
 from array import array
 from struct import pack
 from sklearn.neural_network import MLPClassifier
+from datetime import date
 
 from audio.utils import extract_feature
-from database.models import Mood
+from database.user import User
+from database.models import Database
 
 from database.db import get_db
+
+from flask_login import (
+    LoginManager,
+    current_user,
+    login_required,
+    login_user,
+    logout_user,
+)
 
 THRESHOLD = 500
 CHUNK_SIZE = 1024
@@ -135,4 +145,19 @@ def predict_mood():
     result = model.predict(features)[0]
     # show the result !
     print("result:", result)
+    Database.createMood(result)
+    return result
+
+
+def test_predict_mood():
+    # load the saved model (after training)
+    model = pickle.load(open("audio/result/mlp_classifier.model", "rb"))
+    # extract features and reshape it (change actor to test different moods)
+    filename = "F:/Ian/Documents/GitHub/EmotionDetection/Dataset/Actor_24/03-01-01-01-02-02-24.wav"
+    features = extract_feature(filename, mfcc=True, chroma=True, mel=True).reshape(1, -1)
+    # predict
+    result = model.predict(features)[0]
+    # show the result !
+    print("result:", result)
+    Database.createMood(result)
     return result

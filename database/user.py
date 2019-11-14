@@ -2,6 +2,7 @@ from flask_login import UserMixin
 
 from database.db import get_db
 
+
 class User(UserMixin):
     def __init__(self, id_, name, email, profile_pic):
         self.id = id_
@@ -45,6 +46,7 @@ class User(UserMixin):
             "VALUES (?, ?, ?, ?)",
             (id_, name, email, profile_pic),
         )
+
         # db.exectue(
         #     "INSERT INTO ED_users (userID, id) "
         #     "VALUES (1, 'test')")
@@ -70,6 +72,9 @@ class User(UserMixin):
 
 
 
+        db.commit()
+
+
     @staticmethod
     def delete(user_id):
         db = get_db()
@@ -78,6 +83,7 @@ class User(UserMixin):
             user_id
         )
         db.commit()
+
 
 
 
@@ -94,3 +100,4 @@ class User(UserMixin):
     #         id_=user[0], name=user[1], email=user[2], profile_pic=user[3]
     #     )
     #     return user
+

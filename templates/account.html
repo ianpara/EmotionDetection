@@ -2,8 +2,32 @@
 {% from "macros.html" import nav_link2 with context %}
 {% block content %}
 
-<h1>Account Page</h1>
-<p>Hello, {{ current_user.name}}! You're logged in! Email: {{ current_user.email}} ID: {{ current_user.id }}</p>
+<h1>Your Account</h1>
+    <br>
+    <p>Name: {{ current_user.name}}</p>
+    <p>Email: {{ current_user.email}}</p>
+    <br>
+    <br>
 
+    <form action="/delete_account">
+        <button type="submit" class="btn btn-outline-danger" onclick="popUp()">
+            <span>Delete Account</span>
+        </button>
+    </form>
 
+<<<<<<< HEAD
+=======
+
+{% endblock %}
+{% block script %}
+<script>
+function popUp() {
+  if (confirm("Are you sure you want to delete your account?")) {
+    return true;
+  } else {
+    return false;
+  }
+}
+</script>
+>>>>>>> ian
 {% endblock %}

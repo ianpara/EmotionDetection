@@ -151,7 +151,7 @@ class Database():
     @staticmethod
     def removeMood(mood):
         id = Database.getID(current_user.id)
-        cursor.execute("DELETE FROM moods_tracker WHERE moodID = ?", [mood_id])
+        cursor.execute("DELETE FROM moods_tracker WHERE moodID = ?", [mood])
         dbconn.commit()
 
 

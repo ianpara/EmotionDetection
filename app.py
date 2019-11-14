@@ -36,9 +36,6 @@ GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid-configura
 app = Flask(__name__)
 
 app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
-app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=30)
-app.config['REMEMBER_COOKIE_SECURE'] = True
-
 
 # User session management setup
 # https://flask-login.readthedocs.io/en/latest
@@ -147,7 +144,7 @@ def callback():
         User.create(unique_id, users_name, users_email, picture)
 
     # Begin user session by logging the user in
-    login_user(user, remember=True)
+    login_user(user, remember=True, duration=timedelta(days=30))
 
     # Send user back to homepage
     return redirect(url_for("home"))

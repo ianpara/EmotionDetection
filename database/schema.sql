@@ -4,7 +4,8 @@ CREATE TABLE "user" (
 	"email"	TEXT UNIQUE,
 	"profile_pic"	TEXT,
 	"userID"	INTEGER PRIMARY KEY AUTOINCREMENT,
-	"joke_counter"	INTEGER DEFAULT 0
+	"joke_counter"	INTEGER DEFAULT 0,
+	"motivation_counter"	INTEGER DEFAULT 0
 );
 
 CREATE TABLE "moods_tracker" (

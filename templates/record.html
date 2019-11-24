@@ -2,11 +2,28 @@
 {% from "macros.html" import nav_link2 with context %}
 {% block content %}
 
+    <! -- Mood Modal -->
+<div id="modalMood" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body justify-content-center align-content-center">
+                <p><span id="resultHTML"></span></p>
+                <br>
+            </div>
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+    </div>
+</div>
+
+
+
 <h2>Record Your Mood</h2>
 <br>
     <br>
     <p>Hi {{ current_user.name }}, how is your day going?</p>
-    <p>Result: <span id="resultHTML"></span></p>
 
 {% endblock %}
 
@@ -19,24 +36,15 @@ $(document).ready(function() {
         url: "{{ url_for('start_record') }}",
         datatype: "text",
         success: function(response){
-            console.log(response);
             document.getElementById("resultHTML").innerHTML = response;
+            $("#modalMood").modal();
         }
     });
+
 } else {
          return false;
     }
 });
 
-    function deleteRow(r) {
-  if (confirm("Are you sure you want to delete this mood?")) {
-      var i = r.parentNode.parentNode.rowIndex;
-      document.getElementById("mood-table").deleteRow(i);
-      alert("Mood deleted")
-      return true;
-  } else {
-      return false;
-  }
-}
 </script>
 {% endblock %}

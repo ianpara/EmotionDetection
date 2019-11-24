@@ -68,7 +68,7 @@ def extract_feature(file_name, **kwargs):
 
 def load_data(test_size=0.5):
     X, y = [], []
-    for file in glob.glob("F:/Ian/Documents/GitHub/EmotionDetection/Dataset/Actor_*/*.wav"):
+    for file in glob.glob("C:/Users/Ian/Documents/GitHub/EmotionDetection/EmotionDetection/Dataset/Actor_*/*.wav"):
         # get the base name of the audio file
         basename = os.path.basename(file)
         # get the emotion label

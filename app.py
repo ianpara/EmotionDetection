@@ -142,6 +142,8 @@ def callback():
     # Doesn't exist? Add it to the database.
     if not User.get(unique_id):
         User.create(unique_id, users_name, users_email, picture)
+        new_user = True
+        return new_user
 
     # Begin user session by logging the user in
     login_user(user, remember=True, duration=timedelta(days=30))

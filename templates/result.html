@@ -19,38 +19,15 @@
 </div>
 
 
-
-
-<h2>Record Your Mood</h2>
 <br>
     <br>
-    <p>Hi {{ current_user.name }}, how is your day going?</p>
+    <p>{{ current_user.name }} you seem to be {{ result }} here is something that may help: {{ output }}</p>
 
-    <form action="/result">
-        <button type="submit" class="btn btn-outline-default">
-            <span>Test</span>
-        </button>
-    </form>
+
 
 {% endblock %}
 
 {% block script %}
-<script>
-console.log({{ result }})
 
-{#$(document).ready(function() {
 
-    $.ajax({
-        type: 'GET',
-        url: "{{ url_for('start_record') }}",
-        datatype: "text",
-        success: function (response) {
-            document.getElementById("resultHTML").innerHTML = response;
-            $("#modalMood").modal();
-        }
-
-    })
-});#}
-
-</script>
 {% endblock %}

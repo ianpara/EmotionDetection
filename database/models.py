@@ -131,7 +131,9 @@ class Database():
     @staticmethod
     def retrieveMoods():
         id = Database.getID(current_user.id)
-        cursor.execute("SELECT mood, calenderDate,moodID FROM moods_tracker WHERE userID = ?", (id[0],))
+        cursor.execute("SELECT mood, calenderDate,moodID "
+                       "FROM moods_tracker WHERE userID = ?"
+                       "ORDER BY moodID DESC", (id[0],))
         mood_data = cursor.fetchall()
         return mood_data
 

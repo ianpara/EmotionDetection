@@ -176,13 +176,14 @@ def record():
 
 
 # background process happening without any refreshing
-@app.route('/start_record', methods=['POST'])
+@app.route('/result', methods=['GET', 'POST'])
 @login_required
 def start_record():
     # output = test_predict_mood()
     result = predict_mood()
-    output = Database.feelBetter(result);
-    return output
+    output = Database.feelBetter(result)
+    print(output)
+    return render_template('result.html', output=output, result=result)
 
 # log page
 @app.route('/logs', methods=['GET', 'POST'])

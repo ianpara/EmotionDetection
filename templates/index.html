@@ -1,13 +1,13 @@
 {% extends "home_layout.html" %}
-{% from "macros.html" import nav_link2 with context %}
+{% from "macros.html" import nav_link with context %}
 {% block content %}
-
+<div style="text-align: center">
 <h1>Welcome to GLADiator</h1>
 <br>
-<p>Hello {{ current_user.name }} and welcome to GLADiator. We can help you achieve inner peace by suggestion different ways to wind down based on your current mood.</p>
+<p>Hello {{ current_user.name }} and welcome to GLADiator. We can help you achieve inner peace by suggesting different ways to wind down based on your current mood.</p>
     <br>
-<p>Goto the 'Record Mood' page to start a mood recording session.</p>
+<p>Go to the 'Record Mood' page to start a mood recording session. As soon as you go to the page you can start talking about your day or anything you'd like.</p>
     <br>
-<p>To see your past moods goto the 'Logs' page.</p>
-
+<p>To see your past moods go to the 'Logs' page.</p>
+</div>
 {% endblock %}

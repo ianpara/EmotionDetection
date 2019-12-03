@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -10,70 +10,99 @@
     <title>{% block title %}{{ title }}{% endblock %} - GLADiator</title>
 
     <!-- Bootstrap core CSS -->
-      <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
-      <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.css">
-      <link rel="stylesheet" type="text/css" href="static/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="static/css/custom.css">
 
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="static/css/cover_custom.css">
-  </head>
+
+</head>
+
 <body>
 
-<! -- Content -->
-
-    <div class="site-wrapper">
-
-      <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand"><img src="/static/images/roman_helmet_48px.png" class="d-inline-block align-top" width="30" height="30">GLADiator</h3>
-              <nav class="nav nav-masthead">
-                {{ nav_link('home', 'Home') }}
-                {{ nav_link('about', 'About') }}
-                {{ nav_link('contact', 'Contact') }}
-              </nav>
-            </div>
-          </div>
-
-            <!-- Child content block -->
-            {% block content %}{% endblock %}
-
-        </div>
-
-      </div>
-
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background: #750505;">
+    <a class="navbar-brand" href="#">
+        <img src="static/images/roman_helmet_48px.png" width="30" height="30" class="d-inline-block align-top" alt="gladiator logo">
+        GLADiator
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            {{ nav_link('home', 'Home') }}
+            {{ nav_link('about', 'About') }}
+            {{ nav_link('contact', 'Contact') }}
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navBarDropdown" role="button" data-toggle="dropdown">
+                    <img src="/static/images/user.svg" alt="profile pic" width="35" height="35"></img>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" data-toggle="modal" data-target="#modalLogin" href="#">Login</a>
+                </div>
+            </li>
+        </ul>
     </div>
+</nav>
+<body>
 
+<div class="container">
+<! -- Login Modal -->
+<div id="modalLogin" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Login</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="close-modal" aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
+            <div class="modal-body justify-content-center align-content-center">
+                <form action="/login">
+                    <button type="submit" class="btn-google">
+                        <img src="static/images/icon-google.png" alt="GOOGLE"><span>Google</span>
+                    </button>
+                </form>
+                <br>
+                <span class="modal-note">Not a member? Click the button to become one!</span>
+            </div>
+        </div>
+    </div>
+</div>
 
+    <!-- Child content block -->
+    {% block content %}{% endblock %}
 
     <!-- errors -->
-      {% if error %}
-        <p class="error"><strong>Error:</strong> {{ error }}</p>
-      {% endif %}
+    {% if error %}
+    <p class="error"><strong>Error:</strong> {{ error }}</p>
+    {% endif %}
 
-      <!-- messages -->
-      {% for message in get_flashed_messages() %}
-        {{ message }}
-      {% endfor %}
+    <!-- messages -->
+    {% for message in get_flashed_messages() %}
+    {{ message }}
+    {% endfor %}
 
 </div>
 
- <!-- Bootstrap core JavaScript
+
+
+<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="static/js/jquery-3.2.1.min.js"></script>
-    <script src="static/js/popper.js"></script>
-    <script src="static/js/bootstrap.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="static/js/jquery-3.2.1.min.js"></script>
+<script src="static/js/popper.js"></script>
+<script src="static/js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- Custom page scripts -->
+{% block script %}{% endblock %}
 
-  </body>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+</body>
 </html>

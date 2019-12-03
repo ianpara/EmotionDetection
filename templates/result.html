@@ -1,33 +1,21 @@
 {% extends "home_layout.html" %}
-{% from "macros.html" import nav_link2 with context %}
+{% from "macros.html" import nav_link with context %}
 {% block content %}
-
-    <! -- Mood Modal -->
-<div id="modalMood" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-            <div class="modal-body justify-content-center align-content-center">
-                <p><span id="resultHTML"></span></p>
-                <br>
-            </div>
-
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='{{ url_for('home') }}' ">Close</button>
-
-        </div>
-    </div>
-</div>
 
 
 <br>
     <br>
-    <p>{{ current_user.name }} you seem to be {{ result }} here is something that may help: {{ output }}</p>
-
+    {% if result != 'happy' %}
+        <h4>You seem to be {{ result }} here is something that may help: {{ output }}</h4>
+    {% else %}
+        <h4>You seem to be {{ result }}. Keep doing what you're doing!
+    {% endif %}
 
 
 {% endblock %}
 
 {% block script %}
+
 
 
 {% endblock %}

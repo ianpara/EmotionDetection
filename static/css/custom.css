@@ -60,21 +60,25 @@ a:hover {
 /*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
 	margin: 0px;
-    color: white;
+    color: black;
 }
 
 p {
 	font-family: Poppins-Regular;
 	font-size: 14px;
 	line-height: 1.7;
-	color: white;
+	color: black;
 	margin: 0px;
+}
+
+td {
+    color: black;
 }
 
 /*//////////////////////////////////////////////////////////////////
 [ MAIN ]*/
 body {
-    background: #333;
+    background: white;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -182,13 +186,7 @@ button:hover {
 
 /*//////////////////////////////////////////////////////////////////
 [ MODAL ]*/
-.modal-content {
-    background-color: #444444;
-}
 
-.close-modal{
-    color: white;
-}
 
 /*//////////////////////////////////////////////////////////////////
 [ CAROUSEL ]*/

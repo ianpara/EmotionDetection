@@ -1,34 +1,16 @@
 {% extends "home_layout.html" %}
-{% from "macros.html" import nav_link2 with context %}
+{% from "macros.html" import nav_link with context %}
 {% block content %}
-
-    <! -- Mood Modal -->
-<div id="modalMood" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-            <div class="modal-body justify-content-center align-content-center">
-                <p><span id="resultHTML"></span></p>
-                <br>
-            </div>
-
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='{{ url_for('home') }}' ">Close</button>
-
-        </div>
-    </div>
-</div>
-
-
 
 
 <h2>Record Your Mood</h2>
 <br>
     <br>
-    <p>Hi {{ current_user.name }}, how is your day going?</p>
+    <h4>Hi {{ current_user.name }}, how is your day going?</h4>
 
-    <form action="/result">
+    <form action="/result" name="result">
         <button type="submit" class="btn btn-outline-default">
-            <span>Test</span>
+            <span></span>
         </button>
     </form>
 
@@ -52,5 +34,8 @@ console.log({{ result }})
     })
 });#}
 
+window.onload = function(){
+  document.forms['result'].submit();
+}
 </script>
 {% endblock %}

@@ -182,7 +182,7 @@ def start_record():
     # result = test_predict_mood()
     result = predict_mood()
     output = Database.feelBetter(result)
-    return render_template('result.html', output=output, result=result)
+    return render_template('result.html', title="Result", output=output, result=result)
 
 
 

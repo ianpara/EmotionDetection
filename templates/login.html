@@ -14,6 +14,7 @@
   <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="static/css/login-custom.css">
   <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.css">
+  <link type="text/css" rel="stylesheet" href="/static/css/t-scroll.min.css">
 
 
 </head>
@@ -34,7 +35,7 @@
     </a>
     <form action="/login">
       <button type="submit" class="btn-google">
-        <img src="static/images/icon-google.png" alt="GOOGLE">Sign In With Google
+        <img src="static/images/icon-google.png" alt="GOOGLE"><span class="sign-in-text">Sign In With Google</span>
       </button>
     </form>
   </div>
@@ -55,11 +56,11 @@
         </div>
       </div>
 
-      <div class="row justify-content-between info-row">
-        <div class="col-sm-12 col-md-4 col-md-4">
+      <div class="row justify-content-between info-row slideUp" data-t-show="1">
+        <div class="col-4">
             <img id="face-img" src="static/images/mood.svg">
         </div>
-        <div class="info info-right col-sm-12 col-md-6 col-lg-6 align-self-center">
+        <div class="info info-right col-6 align-self-center">
           <h2 class="cover-heading">Fight Your Inner Demons</h2>
           <br>
           <p class="lead">GLADiator is a tool to help you identify and record your emotions. Moods are the heart of GLADiator (and you too) so we developed a system that can accurately analyze audio to identify your current mood.</p>
@@ -68,7 +69,7 @@
 
 
 
-      <div class="row justify-content-between info-row">
+      <div class="row justify-content-between info-row slideUp" data-t-show="2">
         <div class="info col-6 align-self-center">
           <h2 class="cover-heading">We'll Help You</h2>
           <br>
@@ -80,7 +81,7 @@
       </div>
 
 
-      <div class="row justify-content-between info-row">
+      <div class="row justify-content-between info-row slideUp" data-t-show="3">
         <div class="col-4">
             <img id="face-img" src="static\images\empathy.svg">
         </div>
@@ -93,9 +94,49 @@
       </div>
 
 
+
+        <div class="row info-row-mobile slideUp" data-t-show="1">
+            <div class="info col align-self-center">
+                <h2 class="cover-heading">Fight Your Inner Demons</h2>
+                <br>
+                <p class="lead">GLADiator is a tool to help you identify and record your emotions. Moods are the heart of GLADiator (and you too) so we developed a system that can accurately analyze audio to identify your current mood.</p>
+            </div>
+            <div class="col align-self-center">
+                <img id="face-img" src="static/images/mood.svg">
+            </div>
+        </div>
+
+
+
+      <div class="row info-row-mobile slideUp" data-t-show="2">
+        <div class="info col align-self-center">
+          <h2 class="cover-heading">We'll Help You</h2>
+          <br>
+          <p class="lead">Once you record your mood that's where we step in. Depending on if your mood is negative or a positive one, we'll offer jokes and inspirational quotes to get you back on track and feeling yourself again!</p>
+        </div>
+        <div class="col align-self-center">
+            <img id="face-img" src="static/images/thinking.svg">
+        </div>
+      </div>
+
+
+      <div class="row info-row-mobile slideUp" data-t-show="3">
+        <div class="info col align-self-center">
+          <h2 class="cover-heading">Live Better</h2>
+          <br>
+          <p class="lead">GLADiator was created to be a guiding hand that helps you learn healthy coping exercises that you can apply to every day life. Our team developed GLADiator to be a form of mobile assistance that can detect emotional
+            episodes in an easy and friendly way.</p>
+        </div>
+              <div class="col align-self-center">
+            <img id="face-img" src="static\images\empathy.svg">
+        </div>
+      </div>
+
+
     </div>
 
   </div>
+
 
   <div class="align-items-center footer">
       <a href="https://github.com/ianpara/EmotionDetection">
@@ -104,19 +145,21 @@
   </div>
 
 
-
-  <!-- Bootstrap core JavaScript
-    ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="static/js/jquery-3.2.1.min.js"></script>
   <script src="static/js/popper.js"></script>
   <script src="static/js/bootstrap.js"></script>
   <script src="static/js/custom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-
-
+  <script type="text/javascript" src="/static/js/t-scroll.min.js"></script>
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+  <script type="text/javascript">
+      Tu.tScroll({
+          't-element': '.slideUp'
+      })
+  </script>
 
 </body>
 

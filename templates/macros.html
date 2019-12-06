@@ -1,8 +1,22 @@
 {% macro nav_link(endpoint, name, icon) %}
 {% if request.endpoint.endswith(endpoint) %}
-    <li class="active"><a href="{{ url_for(endpoint) }}"><i class="fas fa-{{ icon }}"></i>{{ name }}</a></li>
+    <li class="active">
+        <a href="{{ url_for(endpoint) }}">
+            <span class="icon">
+                <i class="fas fa-{{ icon }}"></i>
+            </span>
+            <span class="nav-name">{{ name }}</span>
+        </a>
+    </li>
 {% else %}
-    <li><a href="{{ url_for(endpoint) }}"><i class="fas fa-{{ icon }}"></i>{{ name }}</a></li>
+    <li>
+        <a href="{{ url_for(endpoint) }}">
+            <span class="icon">
+                <i class="fas fa-{{ icon }}"></i>
+            </span>
+            <span class="nav-name">{{ name }}</span>
+        </a>
+    </li>
 {% endif %}
 {% endmacro %}
 

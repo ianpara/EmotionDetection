@@ -158,16 +158,6 @@ def logout():
     logout_user()
     return redirect(url_for("home"))
 
-# contact page
-@app.route('/contact')
-def contact():
-    return render_template('contact.html', title="Contact")
-
-# about page
-@app.route('/about')
-def about():
-    return render_template('about.html', title="About")
-
 # record page
 @app.route('/record')
 @login_required

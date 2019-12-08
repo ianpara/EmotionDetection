@@ -9,8 +9,7 @@ from sklearn.neural_network import MLPClassifier
 from datetime import date
 
 import logging
-logging.basicConfig(level=logging.DEBUG, filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
-logging.warning('This will get logged to a file')
+
 
 from audio.utils import extract_feature
 from database.user import User

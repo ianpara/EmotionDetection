@@ -37,12 +37,15 @@ pip install -r requirements.txt
 
 ### Install Python
 Download Python 3.6 from [here](https://www.python.org/ftp/python/3.6.3/python-3.6.3-amd64.exe).
+
 Run the installer.
-Make sure to check "Add Python 3.6 to PATH".
+
+**Make sure to check "Add Python 3.6 to PATH".**
+
 To test Python was installed properly open a command prompt (win+r->’cmd’->Enter) and try `pip help`.
 You should see a list of available commands including install, which we’ll use for the next part.
 ### Install virtualenv
-Now that you have Python installed and a command prompt open installing virtualenv to our root Python installation is as easy as typing `pip install virtualenv`. 
+Now that you have Python installed and a command prompt open we need to install virtualenv to our root Python installation by typing `pip install virtualenv`. 
 
 Now we have virtualenv installed which will make it possible to create individual environments to test our code in. But managing all these environments can become cumbersome. So we’ll pip install another helpful package…
 ### Install virtualenvwrapper-win

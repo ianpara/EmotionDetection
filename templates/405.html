@@ -1,8 +1,10 @@
-{% extends "home_layout.html" %}
-{% from "macros.html" import nav_link2 with context %}
+{% extends "error_layout.html" %}
+{% from "macros.html" import nav_link with context %}
 {% block content %}
 
 <h2>Something went wrong!</h2>
-
+    <form action="/">
+     <button class="btn btn-outline-light" type="submit">Go Back</button>
+    </form>
 
 {% endblock %}

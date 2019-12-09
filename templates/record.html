@@ -1,29 +1,41 @@
 {% extends "home_layout.html" %}
-{% from "macros.html" import nav_link2 with context %}
+{% from "macros.html" import nav_link with context %}
 {% block content %}
+
 
 <h2>Record Your Mood</h2>
 <br>
     <br>
-    <p>Hi {{ current_user.name }}, how is your day going?</p>
-    <p>Result: <span id="resultHTML"></span></p>
+    <h4>Hi {{ current_user.name }}, how is your day going?</h4>
+
+    <form action="/result" name="result">
+        <button type="submit" class="btn btn-outline-default result">
+            <span class="d-none"></span>
+        </button>
+    </form>
 
 {% endblock %}
 
 {% block script %}
 <script>
-$(document).ready(function() {
-    alert("Recording");
+console.log({{ result }})
+
+{#$(document).ready(function() {
+
     $.ajax({
-        type:'POST',
+        type: 'GET',
         url: "{{ url_for('start_record') }}",
         datatype: "text",
-        success: function(response){
-            console.log(response);
+        success: function (response) {
             document.getElementById("resultHTML").innerHTML = response;
+            $("#modalMood").modal();
         }
-    });
 
-});
+    })
+});#}
+
+window.onload = function(){
+  document.forms['result'].submit();
+}
 </script>
 {% endblock %}

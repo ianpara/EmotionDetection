@@ -1,24 +1,29 @@
 {% extends "home_layout.html" %}
-{% from "macros.html" import nav_link2 with context %}
+{% from "macros.html" import nav_link with context %}
 {% block content %}
 
     <h2>Your Past Moods</h2>
     <br>
-    <table class="table table-hover">
+    <table class="table table-hover" id="mood-table">
         <thead>
         <tr>
-            <th scope="col" style="color: white">Mood</th>
-            <th scope="col" style="color: white">Date</th>
+            <th scope="col" style="color: black">Mood</th>
+            <th scope="col" style="color: black">Date</th>
         </tr>
         </thead>
         <tbody>
             {% for row in table %}
          <tr>
-                <td style="color: white">{{ row[0] }}</td>
-                <td style="color: white">{{ row[1] }}</td>
+                <td style="color: black">{{ row[0] }}</td>
+                <td style="color: black">{{ row[1] }}</td>
         </tr>
             {%  endfor %}
 
         </tbody>
     </table>
+{% endblock %}
+
+{% block script %}
+
+
 {% endblock %}

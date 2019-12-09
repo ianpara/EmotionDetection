@@ -3,6 +3,7 @@
 import json
 import os
 import sqlite3
+from datetime import timedelta
 
 #from db_connect import Database #mysql local db
 
@@ -146,12 +147,11 @@ def callback():
     # Doesn't exist? Add it to the database.
     if not User.get(unique_id):
         User.create(unique_id, users_name, users_email, picture)
-        print("just finished calling create method")
-        # User.create_ED_users(unique_id)
-        # print("just finished calling create_ED_users method in same if block")
+        new_user = True
+        return new_user
 
     # Begin user session by logging the user in
-    login_user(user)
+    login_user(user, remember=True, duration=timedelta(days=30))
 
     # Send user back to homepage
     return redirect(url_for("home"))
@@ -163,16 +163,6 @@ def logout():
     logout_user()
     return redirect(url_for("home"))
 
-# contact page
-@app.route('/contact')
-def contact():
-    return render_template('contact.html', title="Contact")
-
-# about page
-@app.route('/about')
-def about():
-    return render_template('about.html', title="About")
-
 # record page
 @app.route('/record')
 @login_required
@@ -181,11 +171,15 @@ def record():
 
 
 # background process happening without any refreshing
-@app.route('/start_record', methods=['POST'])
+@app.route('/result', methods=['GET', 'POST'])
+@login_required
 def start_record():
-    # output = test_predict_mood()
-    output = predict_mood()
-    return output
+    # result = test_predict_mood()
+    result = predict_mood()
+    output = Database.feelBetter(result)
+    return render_template('result.html', title="Result", output=output, result=result)
+
+
 
 # log page
 @app.route('/logs', methods=['GET', 'POST'])
@@ -203,6 +197,14 @@ def logs():
 @login_required
 def account():
     return render_template('account.html', title="My Account")
+
+# background process happening without any refreshing
+@app.route('/delete_account')
+@login_required
+def delete_account():
+    Database.remove_user()
+    print ("User deleted")
+    return redirect(url_for("home"))
 
 
 # error pages

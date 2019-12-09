@@ -7,7 +7,7 @@ import os
 import pickle
 
 # load RAVDESS dataset
-X_train, X_test, y_train, y_test = load_data(test_size=0.25)
+X_train, X_test, y_train, y_test = load_data(test_size=0.2)
 # print some details
 # number of samples in training data
 print("[+] Number of training samples:", X_train.shape[0])

@@ -1,0 +1,21 @@
+{% extends "home_layout.html" %}
+{% from "macros.html" import nav_link with context %}
+{% block content %}
+
+
+<br>
+    <br>
+    {% if result != 'happy' %}
+        <h4>You seem to be {{ result }} here is something that may help: {{ output }}</h4>
+    {% else %}
+        <h4>You seem to be {{ result }}. Keep doing what you're doing!</h4>
+    {% endif %}
+
+
+{% endblock %}
+
+{% block script %}
+
+
+
+{% endblock %}

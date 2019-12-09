@@ -54,13 +54,12 @@ CREATE TABLE "contacts" (
 	PRIMARY KEY("userID","contact_number")
 );
 
-CREATE TABLE motivational_tracker (
-  id TEXT PRIMARY KEY,
-  name TEXT NOT NULL,
-  email TEXT UNIQUE NOT NULL,
-  profile_pic TEXT NOT NULL,
-  FOREIGN KEY (id)
-  REFERENCES mood (user_id)
+CREATE TABLE "motivational_tracker" (
+	"userID"	INTEGER,
+	"motivationalID"	INTEGER,
+	FOREIGN KEY("motivationalID") REFERENCES "motivational_quotes"("motivationalID") ON UPDATE CASCADE,
+	FOREIGN KEY("userID") REFERENCES "user"("userID") ON UPDATE CASCADE,
+	PRIMARY KEY("userID","motivationalID")
 );
 
 CREATE TABLE contacts (

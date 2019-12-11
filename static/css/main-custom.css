@@ -39,6 +39,7 @@ body, html {
 .wrapper {
   display: flex;
   width: 100%;
+
 }
 
 /*---------------------------------------------*/
@@ -347,6 +348,7 @@ a.article:hover {
     }
 
 
+
 }
 
 
@@ -405,4 +407,98 @@ label {
   left: 5%; */
 }
 
+/*//////////////////////////////////////////////////////////////////
+[ FEATURES ]*/
+.features {
+    padding-top: 5em;
+
+}
+
+.feature-img {
+    width: 100px;
+    height: 100px;
+}
+
+@media (min-width: 576px) {
+    .features {
+    padding-top: 10em;
+}
+    .feature-img {
+    width: 100px;
+    height: 100px;
+}
+
+}
+
+@media (min-width: 768px) {
+    .features {
+    padding-top: 15em;
+
+}
+    .feature-img {
+    width: 150px;
+    height: 150px;
+}
+
+}
+
+@media (min-width: 992px) {
+    .features {
+    padding-top: 15em;
+
+}
+    .feature-img {
+    width: 150px;
+    height: 150px;
+}
+
+}
+
+@media (min-width: 1200px) {
+    .features {
+    padding-top: 6em;
+
+}
+    .feature-img {
+    width: 200px;
+    height: 200px;
+}
+
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ FOOTER ]*/
+
+footer {
+    padding-top: 5em;
+
+}
+
+@media (min-width: 576px) {
+    footer {
+    padding-top: 1em;
+}
+}
+
+@media (min-width: 768px) {
+    footer {
+    padding-top: 1em;
+
+}
+}
+
+@media (min-width: 992px) {
+    footer {
+    padding-top: 5em;
+
+}
+}
+
+@media (min-width: 1200px) {
+    footer {
+    margin-top: 5em;
+
+}
+}
 

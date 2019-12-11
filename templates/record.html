@@ -5,8 +5,10 @@
 
 <h2>Record Your Mood</h2>
 <br>
-    <br>
+
     <h4>Hi {{ current_user.name }}, how is your day going?</h4>
+    <br>
+    <h6>We can process your mood when you stop talking. The longer you talk the more data we can analyze.</h6>
 
     <form action="/result" name="result">
         <button type="submit" class="btn btn-outline-default result">
@@ -18,24 +20,9 @@
 
 {% block script %}
 <script>
-console.log({{ result }})
 
-{#$(document).ready(function() {
-
-    $.ajax({
-        type: 'GET',
-        url: "{{ url_for('start_record') }}",
-        datatype: "text",
-        success: function (response) {
-            document.getElementById("resultHTML").innerHTML = response;
-            $("#modalMood").modal();
-        }
-
-    })
-});#}
-
-window.onload = function(){
-  document.forms['result'].submit();
-}
+    window.onload = function(){
+        document.forms['result'].submit();
+    }
 </script>
 {% endblock %}
